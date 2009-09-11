@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TestingMapView!</string>
+    <string name="app_name">miniBus</string>
+<string name="bus_stop_act">Bus Stop Information</string>
+<string name="bus_name_lookup">Find stop by name</string>
+<string name="bus_address_lookup">Find stops near address or postcode</string>
+<string name="starred_stops">Starred bus stops</string>
+<string-array name="units">
+	<item>Metric</item>
+	<item>Imperial</item>
+</string-array>
+<string name="search_label">miniBus</string>
+<string name="search_hint">Name, address, SMS code</string>
+<string name="about">About miniBus</string>
+<string-array name="reminder_intervals">
+<item>5 minutes</item>
+<item>10 minutes</item>
+<item>20 minutes</item>
+<item>30 minutes</item>
+<item>1 hour</item>
+</string-array>
+<string-array name="reminder_intervals_millis">
+<item>300000</item>
+<item>600000</item>
+<item>1200000</item>
+<item>1800000</item>
+<item>3600000</item>
+</string-array>
+</resources>

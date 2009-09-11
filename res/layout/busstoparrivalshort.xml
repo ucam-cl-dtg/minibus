@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:gravity="center_vertical" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"><ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5px" android:background="@drawable/bus"></ImageView>
+<TextView android:layout_width="wrap_content" android:gravity="center_vertical" android:layout_height="wrap_content" android:clickable="false" android:layout_margin="5px" android:id="@+id/col_service" android:minEms="3" android:text="Service"></TextView>
+<TextView android:layout_width="wrap_content" android:gravity="center_vertical" android:layout_height="wrap_content" android:text="Destination" android:layout_margin="5px" android:id="@+id/col_destination"></TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="right" android:layout_weight="1" android:text="Due" android:layout_margin="5px" android:id="@+id/col_due"></TextView>
+<ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/img_data_indicator" android:background="@drawable/timetabledata" android:layout_marginRight="5px"></ImageView>
+</LinearLayout>

@@ -1,0 +1,61 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="General">
+	<ListPreference
+		android:key="unitsystem"
+		android:title="Choose units"
+		android:summary="Metric or imperial units"
+		android:entries="@array/units"
+		android:entryValues="@array/units"
+		android:dialogTitle="Choose units"
+		android:defaultValue="Metric" />
+
+	<CheckBoxPreference
+		android:key="haptics"
+		android:title="Enable force feedback"
+		android:summary="Vibrate phone when selecting bus stops and stars"
+		android:defaultValue="true"
+	/>		
+	
+	</PreferenceCategory>	
+	<PreferenceCategory android:title="Reminders">
+	
+		<PreferenceScreen
+			android:key="reminders"
+			android:title="Reminder options"
+			android:summary="Set reminder time and tone">
+	
+		<ListPreference
+		android:key="reminder_interval"
+		android:title="Reminder time"
+		android:summary="Number of minutes before bus arrives"
+		android:entries="@array/reminder_intervals"
+		android:entryValues="@array/reminder_intervals_millis"
+		android:dialogTitle="Choose time"
+		android:defaultValue="600000" />
+
+		<CheckBoxPreference
+		android:key="reminder_due"
+		android:title="Arrival reminder"
+		android:summary="Remind again 1 min before bus arrives"
+		android:defaultValue="true"
+		/>		
+				
+	<RingtonePreference
+		android:key="reminder_alarmtone"
+		android:title="Reminder tone"
+		android:summary="Set the reminder tone"
+		android:ringtoneType="all"		
+		android:showSilent="true"
+		android:showDefault="false"
+		/>
+	<!-- 	<CheckBoxPreference
+		android:key="reminder_followup"
+		android:title="Follow up reminder"
+		android:summary="Set your phone to ask whether the bus arrived on time."
+		android:defaultValue="true"
+		/>		 -->
+	
+		</PreferenceScreen>
+		
+	</PreferenceCategory>
+</PreferenceScreen>
