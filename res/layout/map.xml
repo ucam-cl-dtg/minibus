@@ -6,7 +6,7 @@
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:clickable="true"
-        android:apiKey="0KMI0WiShaq5SShjMPQTEzS68NArdiQ_Pc5GuAA" android:layout_height="fill_parent" android:hapticFeedbackEnabled="true"/>
+        android:apiKey="0KMI0WiShaq7hSHZ-6MTJR7bXxAt0lDJTfkaEzw" android:layout_height="fill_parent" android:hapticFeedbackEnabled="true"/>
     
 
     
