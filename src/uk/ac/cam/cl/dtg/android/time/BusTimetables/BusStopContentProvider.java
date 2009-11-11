@@ -133,7 +133,11 @@ public class BusStopContentProvider extends ContentProvider {
 		boolean isLiveFolder = false;
 		
 		switch(URI_MATCHER.match(uri)) {
-		
+		case SINGLE_STOP:
+			qb.setTables("busstops");
+			qb.setProjectionMap(PROJECTION_MAP);
+			break;
+			
 		case MULTIPLE_STOP:
 			
 			qb.setTables("favourites LEFT OUTER JOIN busstops ON busstops.stopRef = favourites.stopRef");
