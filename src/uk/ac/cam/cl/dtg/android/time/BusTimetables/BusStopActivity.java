@@ -121,7 +121,6 @@ public class BusStopActivity extends Activity implements Runnable {
 		// Set up context menu for long clicks on a departure
 		ListView list = (ListView) findViewById(R.id.NextBuses); 
 		list.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 				menu.setHeaderIcon(R.drawable.bus);
 				menu.setHeaderTitle("Bus options...");

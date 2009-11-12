@@ -47,24 +47,20 @@ public class LookupAddressActivity extends ListActivity {
 
 		findViewById(R.id.btnSearch).setOnClickListener(new OnClickListener() {
 
-			@Override
 			public void onClick(View arg0) {				
 				searchForAddress();				
 			} });
 		
 		editAddressQuery.setKeyListener(new KeyListener() {
 
-			@Override
 			public void clearMetaKeyState(View arg0, Editable arg1, int arg2) {
 
 			}
 
-			@Override
 			public int getInputType() {
 				return 1;
 			}
 
-			@Override
 			public boolean onKeyDown(View view, Editable text, int keyCode,
 					KeyEvent event) {
 				
@@ -81,12 +77,10 @@ public class LookupAddressActivity extends ListActivity {
 				return false;
 			}
 
-			@Override
 			public boolean onKeyOther(View view, Editable text, KeyEvent event) {
 				return false;
 			}
 
-			@Override
 			public boolean onKeyUp(View view, Editable text, int keyCode,
 					KeyEvent event) {
 				return false;

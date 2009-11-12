@@ -117,7 +117,6 @@ public class AppMain extends TabActivity {
 			.setMessage("The phone's bus stop database is empty. Do you want to download the latest bus stop information now?")
 			.setPositiveButton("Download now", new OnClickListener() {
 
-				@Override
 				public void onClick(DialogInterface arg0, int arg1) {
 					updateDatabase();					
 				}

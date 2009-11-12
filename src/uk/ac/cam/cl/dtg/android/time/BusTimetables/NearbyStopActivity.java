@@ -109,7 +109,6 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 			}
 
 			this.getListView().setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-				@Override
 				public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 					menu.setHeaderTitle("Bus stop actions");
 					MenuItem i = menu.add(0, SHOW_ON_MAP, 0, "Show on map");
@@ -192,25 +191,21 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 	}
 
-	@Override
 	public void onLocationChanged(Location loc) {
 		newLocation(loc);
 
 	}
 
-	@Override
 	public void onProviderDisabled(String provider) {
 		Log.d("Location","Provider disabled: "+provider);
 
 	}
 
-	@Override
 	public void onProviderEnabled(String provider) {
 		Log.d("Location","Provider enabled: "+provider);
 
 	}
 
-	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		Log.d("Location","Provider status change: "+provider+" to "+status);
 		

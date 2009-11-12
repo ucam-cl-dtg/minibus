@@ -147,7 +147,6 @@ public class LookupStopActivity extends ListActivity {
 		// Set the long click handler
 		//TODO: this is duplicated
 		this.getListView().setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 				menu.setHeaderTitle("Bus stop actions");
 				MenuItem i = menu.add(0, SHOW_ON_MAP, 0, "Show on map");

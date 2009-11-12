@@ -108,7 +108,6 @@ public class BusStopMapDialog extends Dialog implements Runnable {
 	          // Set a listener so we can catch the dismiss
 	          setOnDismissListener(new
 	        		  OnDismissListener() {
-										@Override
 										public void onDismiss(
 												DialogInterface arg0) {
 											Log.i("BusStopDialog","I've been dismissed!");
@@ -154,7 +153,6 @@ public class BusStopMapDialog extends Dialog implements Runnable {
 
 	     private class OKListener implements android.view.View.OnClickListener {
 
-	          @Override
 	          public void onClick(View v) {
 	               BusStopMapDialog.this.dismiss();
 	          }

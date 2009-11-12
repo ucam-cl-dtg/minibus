@@ -284,7 +284,6 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 	};
 
-	@Override
 	public void run() {
 
 		int oldZoomLevel = -1;
