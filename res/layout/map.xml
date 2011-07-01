@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="bottom" android:orientation="vertical">
 
-
+<!--  
+	Debug Key
+	android:apiKey="0O8GpGK-0XQnhE_52WijFJByL6u_ol1pzUAItDw" -->
+  
  <com.google.android.maps.MapView
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
         android:clickable="true"
-        android:apiKey="0KMI0WiShaq7hSHZ-6MTJR7bXxAt0lDJTfkaEzw" android:layout_height="fill_parent" android:hapticFeedbackEnabled="true"/>
+      	android:apiKey="0KMI0WiShaq7hSHZ-6MTJR7bXxAt0lDJTfkaEzw"    
+        android:layout_height="fill_parent" android:hapticFeedbackEnabled="true"/>
     
 
     
