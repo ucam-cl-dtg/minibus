@@ -167,12 +167,17 @@ public class BusStopContentProvider extends ContentProvider {
 			String[] newcols = new String[]{LiveFolders._ID, LiveFolders.NAME,LiveFolders.INTENT};
 			MatrixCursor mc = new MatrixCursor(newcols);
 			
+			int stopNameCol = c.getColumnIndexOrThrow(LiveFolders.NAME);
+			int stopLatCol = c.getColumnIndexOrThrow("latE6");
+			int stopLongCol = c.getColumnIndexOrThrow("longE6");
+			int stopRefCol = c.getColumnIndexOrThrow("stopRef");
+			
 			c.moveToFirst();
 			
 			while(true) {
 				if(c.isAfterLast()) break;						
 				
-				BusStop stop = new BusStop(c.getString(c.getColumnIndexOrThrow(LiveFolders.NAME)), c.getDouble(c.getColumnIndexOrThrow("latE6")), c.getDouble(c.getColumnIndexOrThrow("longE6")), c.getString(c.getColumnIndexOrThrow("stopRef")));
+				BusStop stop = new BusStop(c.getString(stopNameCol), c.getDouble(stopLatCol), c.getDouble(stopLongCol), c.getString(stopRefCol));
 				
 				Log.i("CP","Starred stop: "+stop);
 				
