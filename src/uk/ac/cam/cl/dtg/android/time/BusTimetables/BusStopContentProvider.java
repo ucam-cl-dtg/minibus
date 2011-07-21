@@ -167,13 +167,12 @@ public class BusStopContentProvider extends ContentProvider {
 			String[] newcols = new String[]{LiveFolders._ID, LiveFolders.NAME,LiveFolders.INTENT};
 			MatrixCursor mc = new MatrixCursor(newcols);
 			
-			// cursor columns are in this order: lat, ref, id, name, long
 			c.moveToFirst();
 			
 			while(true) {
 				if(c.isAfterLast()) break;						
 				
-				BusStop stop = new BusStop(c.getString(3), c.getDouble(0), c.getDouble(4), c.getString(1));
+				BusStop stop = new BusStop(c.getString(c.getColumnIndexOrThrow(LiveFolders.NAME)), c.getDouble(c.getColumnIndexOrThrow("latE6")), c.getDouble(c.getColumnIndexOrThrow("longE6")), c.getString(c.getColumnIndexOrThrow("stopRef")));
 				
 				Log.i("CP","Starred stop: "+stop);
 				
@@ -181,7 +180,7 @@ public class BusStopContentProvider extends ContentProvider {
 				i.setAction("uk.ac.cam.cl.dtg.android.time.STOPINFO");
 				i.putExtra("stop",(Serializable)stop);
 				
-				Object[] row = new Object[]{ c.getString(2), stop.getName(), "content://uk.ac.cam.cl.dtg.android.time.BusStopApp/" + stop.getStopRef()};
+				Object[] row = new Object[]{ c.getString(c.getColumnIndex(LiveFolders._ID)), stop.getName(), "content://uk.ac.cam.cl.dtg.android.time.BusStopApp/" + stop.getStopRef()};
 						
 				mc.addRow(row);
 				c.moveToNext();
