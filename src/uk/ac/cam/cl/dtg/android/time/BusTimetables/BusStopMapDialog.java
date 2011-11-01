@@ -4,6 +4,7 @@ import uk.ac.cam.cl.dtg.android.time.buses.BusArrivalData;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.LiveMapDataSource;
 import uk.ac.cam.cl.dtg.android.time.data.LiveMapException;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
 import android.app.Activity;
 import android.app.Dialog;
@@ -160,13 +161,14 @@ public class BusStopMapDialog extends Dialog implements Runnable {
 
 	     
 	     public void run() {
-	    	 TransportDataProvider tdp = new TransportDataProvider(DataStore.apiKey, DataStore.feedURL);
-	         try {
-				nextBuses = LiveMapDataSource.getBusArrivalData(currentStop, 5);
-			} catch (LiveMapException e) {
-				e.printStackTrace();
-			}
-	         handler.sendEmptyMessage(0);
+	       TransportDataProvider tdp = new TransportDataProvider(DataStore.apiKey, DataStore.feedURL);
+	       try {
+	         nextBuses = tdp.getBusArrivalData(currentStop.getStopRef(), 5);
+	       } catch (TransportDataException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	       }
+	       handler.sendEmptyMessage(0);
 	     }
 	     
 		private Handler handler = new Handler() {
