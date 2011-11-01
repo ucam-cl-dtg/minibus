@@ -358,9 +358,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 			try {
 				Thread.sleep(DetailStep);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (InterruptedException e) {// if interupted just continue
 			}
 
 		}
