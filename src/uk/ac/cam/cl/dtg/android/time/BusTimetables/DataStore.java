@@ -65,10 +65,14 @@ public class DataStore implements Runnable {
 
 		String sql = "SELECT count(*) FROM busstops";
 		Cursor c = conn.rawQuery(sql, null);
-		c.moveToFirst();
-		int val = c.getInt(0);
-		c.close();
-		return val;
+    try {
+      c.moveToFirst();
+      int val = c.getInt(0);
+
+      return val;
+    } finally {
+      c.close();
+    }
 	}
 
 	/**
@@ -209,22 +213,31 @@ public class DataStore implements Runnable {
 
 		Log.i("QueryForStops","SQL is: "+sql);
 		Cursor results = conn.rawQuery(sql, null);
-		results.moveToFirst();
+    try {
+      ArrayList<BusStop> temp = new ArrayList<BusStop>();
 
-		ArrayList<BusStop> temp = new ArrayList<BusStop>();
-		while(true) {
-			if(results.isAfterLast()) break;
-			//Log.i("queryForStops","STOP FROM DB: "+results.getString(0)+"/"+results.getString(1));
-			BusStop s = new BusStop(results.getString(0), results.getInt(2),results.getInt(3), results.getString(1));
-			s.setMeta("_ID", results.getInt(4));
-			if(results.getInt(5) > 0) s.setMeta("FavID",results.getInt(5));
-			temp.add(s);
-			results.moveToNext();
-		}
-		
-		results.close();
+      // Only if we succeeded - not if empty
+      if (results.moveToFirst()) {
 
-		return temp;
+        while (true) {
+          if (results.isAfterLast())
+            break;
+          // Log.i("queryForStops","STOP FROM DB: "+results.getString(0)+"/"+results.getString(1));
+          BusStop s =
+              new BusStop(results.getString(0), results.getInt(2), results.getInt(3), results
+                  .getString(1));
+          s.setMeta("_ID", results.getInt(4));
+          if (results.getInt(5) > 0)
+            s.setMeta("FavID", results.getInt(5));
+          temp.add(s);
+          results.moveToNext();
+        }
+      }
+
+      return temp;
+    } finally {
+      results.close();
+    }
 
 	}
 
