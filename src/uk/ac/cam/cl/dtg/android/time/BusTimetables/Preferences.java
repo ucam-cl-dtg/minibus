@@ -26,12 +26,18 @@ public class Preferences {
 		
 		return prefs.getBoolean(key, defValue);
 	}
-	
-	static void putBool(String key, boolean Value) {
+
+	/**
+	 * 
+	 * @param key
+	 * @param value
+	 * @return whether this succeeded
+	 */
+	static boolean putBool(String key, boolean value) {
 		
 		Editor e = prefs.edit();
-		e.putBoolean(key, Value);
-		e.commit();
+		e.putBoolean(key, value);
+		return e.commit();
 		
 	}
 }
