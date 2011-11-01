@@ -127,7 +127,7 @@ public class BusStopActivity extends Activity implements Runnable {
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 				menu.setHeaderIcon(R.drawable.bus);
 				menu.setHeaderTitle("Bus options...");
-				MenuItem i = menu.add(0, REMIND_ME, 0, "Set reminder");
+				menu.add(0, REMIND_ME, 0, "Set reminder");
 			}
 		}); 
 

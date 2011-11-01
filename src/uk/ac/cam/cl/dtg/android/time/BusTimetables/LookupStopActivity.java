@@ -147,8 +147,8 @@ public class LookupStopActivity extends ListActivity {
 		this.getListView().setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 				menu.setHeaderTitle("Bus stop actions");
-				MenuItem i = menu.add(0, SHOW_ON_MAP, 0, "Show on map");
-				i = menu.add(0, SHOW_ARRIVALS_DEPS, 1, "Show arrivals / departures");
+				menu.add(0, SHOW_ON_MAP, 0, "Show on map");
+				menu.add(0, SHOW_ARRIVALS_DEPS, 1, "Show arrivals / departures");
 			}
 		});
 		
