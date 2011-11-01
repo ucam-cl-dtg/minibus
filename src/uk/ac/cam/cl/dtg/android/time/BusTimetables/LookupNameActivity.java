@@ -1,21 +1,21 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class LookupNameActivity extends ListActivity {
 

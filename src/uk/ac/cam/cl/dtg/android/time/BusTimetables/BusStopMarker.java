@@ -1,8 +1,9 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.OverlayItem;
-import uk.ac.cam.cl.dtg.android.time.buses.*;
 
 public class BusStopMarker extends OverlayItem {
 	

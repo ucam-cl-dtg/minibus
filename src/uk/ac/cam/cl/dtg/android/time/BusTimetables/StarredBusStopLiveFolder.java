@@ -1,18 +1,11 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.io.Serializable;
-
-import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.provider.LiveFolders;
-import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
 
 public class StarredBusStopLiveFolder extends Activity {
 

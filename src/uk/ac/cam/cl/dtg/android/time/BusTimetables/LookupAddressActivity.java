@@ -1,7 +1,6 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -18,13 +17,15 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.*;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class LookupAddressActivity extends ListActivity {
 

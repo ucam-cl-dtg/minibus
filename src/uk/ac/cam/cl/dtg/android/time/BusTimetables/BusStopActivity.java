@@ -1,7 +1,10 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import uk.ac.cam.cl.dtg.android.time.buses.*;
-import uk.ac.cam.cl.dtg.android.time.data.*;
+import uk.ac.cam.cl.dtg.android.time.buses.BusArrival;
+import uk.ac.cam.cl.dtg.android.time.buses.BusArrivalData;
+import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -16,15 +19,15 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnCreateContextMenuListener;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class BusStopActivity extends Activity implements Runnable {
 

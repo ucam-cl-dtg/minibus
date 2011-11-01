@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
-
 import android.app.SearchManager;
 import android.content.ContentProvider;
 import android.content.ContentValues;

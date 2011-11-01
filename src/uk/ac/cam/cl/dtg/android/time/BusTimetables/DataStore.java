@@ -1,5 +1,11 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,14 +14,6 @@ import android.database.sqlite.SQLiteException;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
-import uk.ac.cam.cl.dtg.android.time.buses.*;
-import uk.ac.cam.cl.dtg.android.time.data.LiveMapDataSource;
-import uk.ac.cam.cl.dtg.android.time.data.LiveMapException;
-import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
-import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
 
 public class DataStore implements Runnable {
 

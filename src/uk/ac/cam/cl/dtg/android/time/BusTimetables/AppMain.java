@@ -2,24 +2,25 @@ package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
 import java.io.Serializable;
 
+import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
+import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
 import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
-import uk.ac.cam.cl.dtg.android.time.data.*;
-import uk.ac.cam.cl.dtg.android.time.buses.*;
-import android.view.Menu;
 
 public class AppMain extends TabActivity {
 

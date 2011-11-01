@@ -4,15 +4,12 @@ package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 import java.util.List;
 
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
-
 import android.app.TabActivity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;

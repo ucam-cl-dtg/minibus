@@ -2,6 +2,8 @@ package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,10 +16,10 @@ import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.MotionEvent;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.ItemizedOverlay;
 import com.google.android.maps.MapView;
-import uk.ac.cam.cl.dtg.android.time.buses.*;
 
 public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements Runnable {
 

@@ -7,33 +7,25 @@ import java.util.List;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.TabActivity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
-import android.provider.Contacts.People;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.location.LocationListener;
-import android.os.Vibrator;
 
 public class NearbyStopActivity extends ListActivity implements LocationListener {
 

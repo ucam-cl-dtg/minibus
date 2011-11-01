@@ -2,7 +2,6 @@ package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
 import java.util.ArrayList;
 
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 
