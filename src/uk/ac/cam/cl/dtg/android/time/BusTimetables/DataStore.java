@@ -356,8 +356,10 @@ public class DataStore implements Runnable {
 
 
 		} catch (TransportDataException e) {
-
+		  // TODO: We should tell the user about this.
 			Log.e("AppMain","Error downloading stop db: "+e.getMessage());
+			Throwable cause = e.getCause();
+			Log.e("AppMain", cause + " " + ((cause != null) ? Log.getStackTraceString(e.getCause()) : Log.getStackTraceString(e)));
 		}
 
 		handler.sendEmptyMessage(0);
