@@ -83,7 +83,7 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 		Criteria crit = new Criteria();
 		crit.setAccuracy(Criteria.ACCURACY_FINE);		
 		String provider = locationManager.getBestProvider(crit, true);
-		Log.e("Nearby","Chosen provider is: "+provider);
+		Log.i("Nearby","Chosen provider is: "+provider);
 
 		// Do we have a provider?
 		if(provider==null) {
