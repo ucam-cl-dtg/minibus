@@ -50,9 +50,66 @@
             <avd>Tablet</avd> -->
           </emulator>
           <undeployBeforeDeploy>true</undeployBeforeDeploy>
+          <sign>
+            <debug>false</debug>
+          </sign>
         </configuration>
         <extensions>true</extensions>
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>sign</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jarsigner-plugin</artifactId>
+            <version>1.2</version>
+            <executions>
+              <execution>
+                <id>signing</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <phase>package</phase>
+                <inherited>true</inherited>
+                <configuration>
+                  <archiveDirectory></archiveDirectory>
+                  <includes>
+                    <include>target/*.apk</include>
+                  </includes>
+                  <keystore>minibus.keystore</keystore>
+                  <storepass>${android.time.minibus.storepassword}</storepass>
+                  <alias>minibus</alias>
+                </configuration>
+              </execution>
+
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+            <version>2.8.4</version>
+            <artifactId>maven-android-plugin</artifactId>
+            <inherited>true</inherited>
+            <configuration>
+              <sign>
+                <debug>false</debug>
+              </sign>
+            </configuration>
+            <executions>
+              <execution>
+                <id>alignApk</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>zipalign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
