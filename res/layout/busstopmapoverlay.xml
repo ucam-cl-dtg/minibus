@@ -1,39 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:orientation="vertical" android:stretchColumns="0"
-     android:layout_gravity="center_vertical|center_horizontal"
-     android:layout_height="wrap_content" android:layout_width="wrap_content">
-    	
-	 
-	<TableRow>
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clickable="true" android:padding="10px">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical|center_horizontal"
+    android:orientation="vertical"
+    android:stretchColumns="0" >
 
+    <TableRow >
 
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Bus Stop Name" android:textSize="20px" android:id="@+id/textStopName"></TextView><CheckBox style="?android:attr/starStyle" android:id="@+id/FavouriteCheckbox" android:layout_width="wrap_content" android:layout_height="wrap_content"></CheckBox>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:padding="10px" >
 
-</LinearLayout>
-	</TableRow> 
-	
-		
-	<TableRow>
-		<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/NextBusesCaption" android:text="Next buses" android:textStyle="bold" android:padding="5px"></TextView>
-</TableRow> 
-	
-	<TableRow>
-		<ListView android:id="@+id/NextBuses" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="false"></ListView>
-	</TableRow>  
-	
-	<TableRow>
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clickable="true" android:gravity="center">
-<ImageView android:id="@+id/ImageView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/livedata" android:layout_margin="5px"></ImageView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Live data"></TextView>
-<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/timetabledata" android:layout_margin="5px"></ImageView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="From timetable"></TextView>
-</LinearLayout>
-	</TableRow> 
-		
-	<TableRow>
-		<Button android:id="@+id/buttonOK" android:text="Close"
-		android:layout_height="wrap_content" android:layout_width="wrap_content" android:hapticFeedbackEnabled="true"/>
-	</TableRow> 
+            <TextView
+                android:id="@+id/textStopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bus Stop Name"
+                android:textSize="20px" >
+            </TextView>
 
-</TableLayout> 
+            <CheckBox
+                android:id="@+id/FavouriteCheckbox"
+                style="?android:attr/starStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </CheckBox>
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow >
+
+        <TextView
+            android:id="@+id/NextBusesCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5px"
+            android:text="Next buses"
+            android:textStyle="bold" >
+        </TextView>
+    </TableRow>
+
+    <TableRow >
+
+        <ListView
+            android:id="@+id/NextBuses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false" >
+        </ListView>
+    </TableRow>
+
+    <TableRow >
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/ImageView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5px"
+                android:background="@drawable/livedata" >
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Live data" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5px"
+                android:background="@drawable/timetabledata" >
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="From timetable" >
+            </TextView>
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow >
+
+        <Button
+            android:id="@+id/buttonOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hapticFeedbackEnabled="true"
+            android:text="Close" />
+    </TableRow>
+
+</TableLayout>

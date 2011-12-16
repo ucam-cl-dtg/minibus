@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipChildren="false"
+    android:gravity="top"
+    android:orientation="vertical" >
 
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clipChildren="false" android:orientation="vertical" android:gravity="top">
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="center_vertical" >
 
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Location provided by: network"
+            android:textSize="12px"
+            android:textStyle="bold" >
+        </TextView>
 
+        <ImageView
+            android:id="@+id/imgStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5px"
+            android:background="@drawable/transmit_green" >
+        </ImageView>
+    </LinearLayout>
 
-
-<LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_vertical" android:layout_gravity="right"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Location provided by: network" android:textSize="12px" android:textStyle="bold" android:layout_weight="1" android:id="@+id/txtStatus"></TextView><ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5px" android:id="@+id/imgStatus" android:background="@drawable/transmit_green"></ImageView>
-</LinearLayout>
-<ListView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@android:id/list"></ListView>
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </ListView>
 
 </LinearLayout>

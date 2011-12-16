@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical"
+    android:padding="5px" >
 
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:gravity="center_vertical" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:padding="5px">
+    <EditText
+        android:id="@+id/textSMSCode"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter SMS code" >
+    </EditText>
 
-
-
-<EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:id="@+id/textSMSCode" android:hint="Enter SMS code"></EditText>
 </LinearLayout>

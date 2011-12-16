@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:orientation="vertical" android:stretchColumns="0"
-     android:layout_gravity="top"
-     android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="top">
-    	
-	 
-	<TableRow android:gravity="top">	
-		<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clickable="true" android:paddingLeft="10px" android:paddingRight="10px" android:paddingTop="10px" android:paddingBottom="2px">
-	
-		
-<EditText android:layout_height="wrap_content" android:layout_width="fill_parent" android:hint="Type part of stop name" android:id="@+id/editNameInput"></EditText>
-</LinearLayout>
-	</TableRow> 
-	
-			
-	<TableRow>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:stretchColumns="0" >
 
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:id="@+id/textLookupInfo" android:padding="0px" android:paddingBottom="5px" android:text=""></TextView>
-		
-	</TableRow> 
-	
-	<TableRow>
-		<ListView android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:smoothScrollbar="true" android:textFilterEnabled="true" android:id="@android:id/list" android:fastScrollEnabled="true"></ListView>
-	</TableRow>  
+    <TableRow android:gravity="top" >
 
-</TableLayout> 
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:paddingBottom="2px"
+            android:paddingLeft="10px"
+            android:paddingRight="10px"
+            android:paddingTop="10px" >
+
+            <EditText
+                android:id="@+id/editNameInput"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type part of stop name" >
+            </EditText>
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow >
+
+        <TextView
+            android:id="@+id/textLookupInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="0px"
+            android:paddingBottom="5px"
+            android:text="" >
+        </TextView>
+    </TableRow>
+
+    <TableRow >
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fastScrollEnabled="true"
+            android:smoothScrollbar="true"
+            android:textFilterEnabled="true" >
+        </ListView>
+    </TableRow>
+
+</TableLayout>

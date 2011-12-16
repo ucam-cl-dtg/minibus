@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipChildren="false"
+    android:gravity="center" >
 
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clipChildren="false" android:gravity="center">
+    <LinearLayout
+        android:id="@+id/LinearLayout02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical" >
 
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:background="@drawable/search" >
+        </ImageView>
 
-<LinearLayout android:id="@+id/LinearLayout02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center"><ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10px" android:background="@drawable/search"></ImageView><TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10px" android:textSize="25px" android:text="No lookup results"></TextView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:layout_margin="5px" android:id="@+id/text_empty" android:gravity="center" android:textSize="20px" android:text="To perform a new search type a stop name / SMS code / address or press Menu then Search"></TextView>
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10px"
+            android:text="No lookup results"
+            android:textSize="25px" >
+        </TextView>
 
-<ListView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@android:id/list"></ListView>
-</LinearLayout>
+        <TextView
+            android:id="@+id/text_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="To perform a new search type a stop name / SMS code / address or press Menu then Search"
+            android:textSize="20px" >
+        </TextView>
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </LinearLayout>
 
 </LinearLayout>

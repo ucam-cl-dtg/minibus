@@ -1,70 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:orientation="vertical" android:stretchColumns="0"
-     android:layout_gravity="top"
-     android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="top">
-    	
-	 
-	<TableRow android:gravity="top">	
-	
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:orientation="vertical" android:stretchColumns="0"
-     android:layout_gravity="top"
-     android:layout_height="wrap_content" android:layout_width="wrap_content" android:gravity="top" android:background="#555">
-     <TableRow>
-		<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clickable="true" android:paddingBottom="0px" android:paddingLeft="10px" android:paddingRight="10px" android:paddingTop="10px">
-			
-				<TextView android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_weight="1"
-				android:text="Bus Stop Name"
-				android:shadowDx = "1.2"
-			    android:shadowDy = "1.2"
-			    android:shadowColor="#000"
-			    android:shadowRadius="1" android:textSize="20px" android:textColor="#fff" android:id="@+id/textStopName_StopAct"></TextView>
-	    
-		    
-		    <CheckBox style="?android:attr/starStyle"
-		    	android:id="@+id/FavouriteCheckbox"
-		    	android:layout_width="wrap_content"
-		    	android:layout_height="wrap_content" android:padding="0px" android:layout_margin="0px"></CheckBox>
-		
-		</LinearLayout>
-		
-	</TableRow>
-	<TableRow android:paddingLeft="10px">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:stretchColumns="0" >
 
+    <TableRow android:gravity="top" >
 
+        <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#555"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:stretchColumns="0" >
 
-	</TableRow>
-	</TableLayout>
-	
-	</TableRow> 
-	
-		
-	<TableRow>
-<!-- 
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nice message to the user." android:padding="5px" android:layout_gravity="center" android:id="@+id/textInformation" android:gravity="center" android:textSize="13px"></TextView>
-	-->
-	
-	<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:clickable="true" android:gravity="center" android:padding="5px">
-<ImageView android:id="@+id/ImageView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5px" android:background="@drawable/transmit_blue"></ImageView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="Live data"></TextView>
-<ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/timetabledata" android:layout_margin="5px"></ImageView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="From timetable"></TextView>
-</LinearLayout>
-	
-	</TableRow> 
-	
-	<TableRow>
-		<ListView android:id="@+id/NextBuses"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content" android:smoothScrollbar="true" android:textFilterEnabled="true" android:clickable="false"></ListView>
-	</TableRow>  
+            <TableRow >
 
-		
-	<TableRow>
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/LinearLayout01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clickable="true"
+                    android:paddingBottom="0px"
+                    android:paddingLeft="10px"
+                    android:paddingRight="10px"
+                    android:paddingTop="10px" >
 
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="5px" android:layout_gravity="center" android:text="Last updated hh:mm" android:id="@+id/textLastUpdate" android:textSize="13px"></TextView>
-		
-	</TableRow> 
-</TableLayout> 
+                    <TextView
+                        android:id="@+id/textStopName_StopAct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:shadowColor="#000"
+                        android:shadowDx="1.2"
+                        android:shadowDy="1.2"
+                        android:shadowRadius="1"
+                        android:text="Bus Stop Name"
+                        android:textColor="#fff"
+                        android:textSize="20px" >
+                    </TextView>
+
+                    <CheckBox
+                        android:id="@+id/FavouriteCheckbox"
+                        style="?android:attr/starStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0px"
+                        android:padding="0px" >
+                    </CheckBox>
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow android:paddingLeft="10px" >
+            </TableRow>
+        </TableLayout>
+    </TableRow>
+
+    <TableRow >
+
+<!-- <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nice message to the user." android:padding="5px" android:layout_gravity="center" android:id="@+id/textInformation" android:gravity="center" android:textSize="13px"></TextView> -->
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/LinearLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="5px" >
+
+            <ImageView
+                android:id="@+id/ImageView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5px"
+                android:background="@drawable/transmit_blue" >
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Live data" >
+            </TextView>
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5px"
+                android:background="@drawable/timetabledata" >
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="From timetable" >
+            </TextView>
+        </LinearLayout>
+    </TableRow>
+
+    <TableRow >
+
+        <ListView
+            android:id="@+id/NextBuses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:smoothScrollbar="true"
+            android:textFilterEnabled="true" >
+        </ListView>
+    </TableRow>
+
+    <TableRow >
+
+        <TextView
+            android:id="@+id/textLastUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5px"
+            android:text="Last updated hh:mm"
+            android:textSize="13px" >
+        </TextView>
+    </TableRow>
+
+</TableLayout>

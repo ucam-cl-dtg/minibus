@@ -1,18 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical" >
 
-<LinearLayout android:id="@+id/LinearLayout01" android:layout_width="fill_parent" android:gravity="center_vertical" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"><ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5px" android:background="@drawable/flag_red" android:id="@+id/img_stopicon"></ImageView>
+    <ImageView
+        android:id="@+id/img_stopicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5px"
+        android:background="@drawable/flag_red" >
+    </ImageView>
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-     android:orientation="vertical" android:stretchColumns="0"
-     android:layout_gravity="center_vertical|center_horizontal"
-     android:layout_height="wrap_content" android:layout_width="wrap_content">
-     
-     <TableRow>
-<TextView android:layout_width="wrap_content" android:gravity="center_vertical" android:layout_height="wrap_content" android:layout_margin="5px" android:text="Stop Name" android:id="@+id/col_nearby_name" android:textSize="20px"></TextView>
-</TableRow>
-<TableRow>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:text="350m" android:id="@+id/col_nearby_dist" android:gravity="left" android:paddingLeft="20px" android:textColor="#960" android:textSize="19px" android:layout_margin="0px"></TextView>
-</TableRow>
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        android:stretchColumns="0" >
 
-</TableLayout>
+        <TableRow >
+
+            <TextView
+                android:id="@+id/col_nearby_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5px"
+                android:gravity="center_vertical"
+                android:text="Stop Name"
+                android:textSize="20px" >
+            </TextView>
+        </TableRow>
+
+        <TableRow >
+
+            <TextView
+                android:id="@+id/col_nearby_dist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0px"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:paddingLeft="20px"
+                android:text="350m"
+                android:textColor="#960"
+                android:textSize="19px" >
+            </TextView>
+        </TableRow>
+    </TableLayout>
+
 </LinearLayout>
