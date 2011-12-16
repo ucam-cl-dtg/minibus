@@ -15,11 +15,12 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:clickable="true"
-            android:paddingBottom="2px"
-            android:paddingLeft="10px"
-            android:paddingRight="10px"
-            android:paddingTop="10px" >
+            android:paddingBottom="@dimen/padding_thin"
+            android:paddingLeft="@dimen/padding"
+            android:paddingRight="@dimen/padding"
+            android:paddingTop="@dimen/padding" >
 
+            <!-- TODO(drt24) Allow the text box to grow and make the button size fixed -->
             <EditText
                 android:id="@+id/editAddrInput"
                 android:layout_width="wrap_content"
@@ -45,8 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="0px"
-            android:paddingBottom="5px"
+            android:padding="@dimen/padding_none"
+            android:paddingBottom="@dimen/padding_mid"
             android:text="Type address and click &apos;Search&apos;" >
         </TextView>
     </TableRow>

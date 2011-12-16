@@ -9,7 +9,7 @@
         android:id="@+id/ImageView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:background="@drawable/star2" >
     </ImageView>
 
@@ -27,12 +27,12 @@
                 android:id="@+id/col_stop_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5px"
+                android:layout_margin="@dimen/padding_mid"
                 android:gravity="center_vertical"
-                android:paddingBottom="10px"
-                android:paddingTop="10px"
+                android:paddingBottom="@dimen/padding"
+                android:paddingTop="@dimen/padding"
                 android:text="Stop Name"
-                android:textSize="20px" >
+                android:textSize="@dimen/text_size_h2" >
             </TextView>
         </TableRow>
 

@@ -9,7 +9,7 @@
         android:id="@+id/ImageView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:background="@drawable/bus" >
     </ImageView>
 
@@ -17,7 +17,7 @@
         android:id="@+id/col_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:clickable="false"
         android:gravity="center_vertical"
         android:minEms="3"
@@ -28,7 +28,7 @@
         android:id="@+id/col_destination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:gravity="center_vertical"
         android:text="Destination" >
     </TextView>
@@ -37,7 +37,7 @@
         android:id="@+id/col_due"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:layout_weight="1"
         android:gravity="right"
         android:text="Due" >
@@ -47,7 +47,7 @@
         android:id="@+id/img_data_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5px"
+        android:layout_marginRight="@dimen/padding_mid"
         android:background="@drawable/timetabledata" >
     </ImageView>
 

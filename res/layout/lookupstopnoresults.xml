@@ -17,7 +17,7 @@
             android:id="@+id/ImageView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10px"
+            android:layout_margin="@dimen/padding"
             android:background="@drawable/search" >
         </ImageView>
 
@@ -25,20 +25,20 @@
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10px"
+            android:layout_margin="@dimen/padding"
             android:text="No lookup results"
-            android:textSize="25px" >
+            android:textSize="@dimen/text_size_h1" >
         </TextView>
 
         <TextView
             android:id="@+id/text_empty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5px"
+            android:layout_margin="@dimen/padding_mid"
             android:layout_weight="1"
             android:gravity="center"
             android:text="To perform a new search type a stop name / SMS code / address or press Menu then Search"
-            android:textSize="20px" >
+            android:textSize="@dimen/text_size_h2" >
         </TextView>
 
         <ListView

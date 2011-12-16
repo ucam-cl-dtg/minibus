@@ -4,14 +4,14 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center_vertical"
-    android:paddingBottom="3px"
-    android:paddingTop="3px" >
+    android:paddingBottom="@dimen/padding_thin"
+    android:paddingTop="@dimen/padding_thin" >
 
     <ImageView
         android:id="@+id/ImageView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="0px"
+        android:layout_margin="@dimen/padding_none"
         android:layout_marginBottom="15px"
         android:layout_marginTop="15px"
         android:background="@drawable/flag_red" >
@@ -29,24 +29,24 @@
             android:id="@+id/col_nearby_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5px"
+            android:layout_margin="@dimen/padding_mid"
             android:layout_weight="0"
             android:gravity="center_vertical"
             android:text="Stop Name"
-            android:textSize="20px" >
+            android:textSize="@dimen/text_size_h2" >
         </TextView>
 
         <TextView
             android:id="@+id/col_nearby_dist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="0px"
+            android:layout_margin="@dimen/padding_none"
             android:layout_weight="0"
             android:gravity="left"
-            android:paddingLeft="20px"
+            android:paddingLeft="@dimen/padding_huge"
             android:text="Some useful text"
             android:textColor="#960"
-            android:textSize="19px" >
+            android:textSize="@dimen/text_size_h3" >
         </TextView>
     </LinearLayout>
 
@@ -55,7 +55,7 @@
         style="?android:attr/starStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="3px" >
+        android:layout_marginRight="@dimen/padding_thin" >
     </CheckBox>
 
 </LinearLayout>

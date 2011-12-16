@@ -8,10 +8,11 @@
         android:id="@+id/text_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="No data available at the moment" >
+        android:text="No data available at the moment"
+        android:textSize="@dimen/text_size_h1" >
     </TextView>
 
 </LinearLayout>

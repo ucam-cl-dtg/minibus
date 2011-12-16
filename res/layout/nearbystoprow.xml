@@ -9,7 +9,7 @@
         android:id="@+id/img_stopicon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:background="@drawable/flag_red" >
     </ImageView>
 
@@ -27,10 +27,10 @@
                 android:id="@+id/col_nearby_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5px"
+                android:layout_margin="@dimen/padding_mid"
                 android:gravity="center_vertical"
                 android:text="Stop Name"
-                android:textSize="20px" >
+                android:textSize="@dimen/text_size_h2" >
             </TextView>
         </TableRow>
 
@@ -40,13 +40,13 @@
                 android:id="@+id/col_nearby_dist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="0px"
+                android:layout_margin="@dimen/padding_none"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:paddingLeft="20px"
+                android:paddingLeft="@dimen/padding_huge"
                 android:text="350m"
                 android:textColor="#960"
-                android:textSize="19px" >
+                android:textSize="@dimen/text_size_h3" >
             </TextView>
         </TableRow>
     </TableLayout>

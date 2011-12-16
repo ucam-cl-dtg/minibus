@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Location provided by: network"
-            android:textSize="12px"
+            android:textSize="@dimen/text_size"
             android:textStyle="bold" >
         </TextView>
 
@@ -28,7 +28,7 @@
             android:id="@+id/imgStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5px"
+            android:layout_margin="@dimen/padding_mid"
             android:background="@drawable/transmit_green" >
         </ImageView>
     </LinearLayout>

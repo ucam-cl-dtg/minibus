@@ -8,7 +8,7 @@
         android:id="@+id/text_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5px"
+        android:layout_margin="@dimen/padding_mid"
         android:layout_weight="1"
         android:gravity="center"
         android:text="No bus stops to display at the moment." >

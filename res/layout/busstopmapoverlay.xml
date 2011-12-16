@@ -14,7 +14,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:clickable="true"
-            android:padding="10px" >
+            android:padding="@dimen/padding" >
 
             <TextView
                 android:id="@+id/textStopName"
@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Bus Stop Name"
-                android:textSize="20px" >
+                android:textSize="@dimen/text_size_h2" >
             </TextView>
 
             <CheckBox
@@ -40,7 +40,7 @@
             android:id="@+id/NextBusesCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5px"
+            android:padding="@dimen/padding_mid"
             android:text="Next buses"
             android:textStyle="bold" >
         </TextView>
@@ -70,7 +70,7 @@
                 android:id="@+id/ImageView02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5px"
+                android:layout_margin="@dimen/padding_mid"
                 android:background="@drawable/livedata" >
             </ImageView>
 
@@ -85,7 +85,7 @@
                 android:id="@+id/ImageView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5px"
+                android:layout_margin="@dimen/padding_mid"
                 android:background="@drawable/timetabledata" >
             </ImageView>
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding">10dp</dimen>
+    <dimen name="padding_huge">20dp</dimen>
+    <dimen name="padding_mid">5dp</dimen>
+    <dimen name="padding_thin">2dp</dimen>
+    <dimen name="padding_none">0dp</dimen>
+    <dimen name="text_size_h1">25sp</dimen>
+    <dimen name="text_size_h2">20sp</dimen>
+    <dimen name="text_size_h3">18sp</dimen>
+    <dimen name="text_size_h4">15sp</dimen>
+    <dimen name="text_size">13sp</dimen>
+</resources>

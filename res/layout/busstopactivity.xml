@@ -27,10 +27,10 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:clickable="true"
-                    android:paddingBottom="0px"
-                    android:paddingLeft="10px"
-                    android:paddingRight="10px"
-                    android:paddingTop="10px" >
+                    android:paddingBottom="@dimen/padding_none"
+                    android:paddingLeft="@dimen/padding"
+                    android:paddingRight="@dimen/padding"
+                    android:paddingTop="@dimen/padding" >
 
                     <TextView
                         android:id="@+id/textStopName_StopAct"
@@ -43,7 +43,7 @@
                         android:shadowRadius="1"
                         android:text="Bus Stop Name"
                         android:textColor="#fff"
-                        android:textSize="20px" >
+                        android:textSize="@dimen/text_size_h2" >
                     </TextView>
 
                     <CheckBox
@@ -51,13 +51,13 @@
                         style="?android:attr/starStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="0px"
-                        android:padding="0px" >
+                        android:layout_margin="@dimen/padding_none"
+                        android:padding="@dimen/padding_none" >
                     </CheckBox>
                 </LinearLayout>
             </TableRow>
 
-            <TableRow android:paddingLeft="10px" >
+            <TableRow android:paddingLeft="@dimen/padding" >
             </TableRow>
         </TableLayout>
     </TableRow>
@@ -73,13 +73,13 @@
             android:layout_height="fill_parent"
             android:clickable="true"
             android:gravity="center"
-            android:padding="5px" >
+            android:padding="@dimen/padding_mid" >
 
             <ImageView
                 android:id="@+id/ImageView02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5px"
+                android:layout_margin="@dimen/padding_mid"
                 android:background="@drawable/transmit_blue" >
             </ImageView>
 
@@ -94,7 +94,7 @@
                 android:id="@+id/ImageView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5px"
+                android:layout_margin="@dimen/padding_mid"
                 android:background="@drawable/timetabledata" >
             </ImageView>
 
@@ -126,9 +126,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="5px"
+            android:padding="@dimen/padding_mid"
             android:text="Last updated hh:mm"
-            android:textSize="13px" >
+            android:textSize="@dimen/text_size" >
         </TextView>
     </TableRow>
 
