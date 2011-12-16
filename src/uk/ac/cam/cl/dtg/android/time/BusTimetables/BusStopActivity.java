@@ -47,6 +47,9 @@ public class BusStopActivity extends Activity implements Runnable {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		// So that we can use these later
+		Preferences.openPrefs(this);
+
 		// Open DataStore
 		db = new DataStore(this, true);
 

@@ -34,6 +34,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 		Log.i("AlarmReceiver","======= Got intent: "+intent.getAction());
 
+		Preferences.openPrefs(context);// So that we can use them later
+
 		/*
 		 * A bus arrival reminder is delivered
 		 */
