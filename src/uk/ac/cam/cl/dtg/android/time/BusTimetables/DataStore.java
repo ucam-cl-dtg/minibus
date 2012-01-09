@@ -21,7 +21,8 @@ public class DataStore implements Runnable {
 	DataStoreHelper dsh;
 	private ProgressDialog pd;
 	private int dataToDownload = 1;
-	
+
+	//TODO: both of these need to be made configurable at compile time rather than hard coded
 	public static final String feedURL = "http://www.cl.cam.ac.uk/research/dtg/transport/omnibus/";
 	public static final String apiKey = "[ELIDED]";
 
