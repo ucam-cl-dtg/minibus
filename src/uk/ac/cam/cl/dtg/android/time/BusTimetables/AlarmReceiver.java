@@ -121,7 +121,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
 		} else if(intent.getAction().equals(BUS_ARRIVAL_REMINDER_CLICKED)) {
-
+			// TODO: this should handle what happens when the user is asked "Was the bus on time?"
 
 
 		}
