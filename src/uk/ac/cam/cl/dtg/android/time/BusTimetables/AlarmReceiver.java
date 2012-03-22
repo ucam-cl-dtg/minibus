@@ -23,6 +23,8 @@ import android.util.Log;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
+	private static final String ALARM_RECEIVER = "AlarmReceiver";
+	
 	// Intent actions
 	public static final String BUS_ARRIVAL_REMINDER = "uk.ac.cam.cl.dtg.android.time.BusTimetables.BUS_ARRIVAL_REMINDER";
 	public static final String BUS_ARRIVAL_REMINDER_CLICKED = "uk.ac.cam.cl.dtg.android.time.BusTimetables.BUS_ARRIVAL_REMINDER_CLICKED";
@@ -32,7 +34,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
-		Log.i("AlarmReceiver","======= Got intent: "+intent.getAction());
+		Log.i(ALARM_RECEIVER,"======= Got intent: "+intent.getAction());
 
 		Preferences.openPrefs(context);// So that we can use them later
 
@@ -41,14 +43,14 @@ public class AlarmReceiver extends BroadcastReceiver {
 		 */
 		if(intent.getAction().equals(BUS_ARRIVAL_REMINDER)) {
 
-			Log.i("AlarmReceiver","We have a bus arrival reminder");
+			Log.i(ALARM_RECEIVER,"We have a bus arrival reminder");
 
 			// Get the Bus Arrival object out of intent
 			BusArrival arrival = (BusArrival) intent
 					.getSerializableExtra("arrival");
 			BusStop stop = (BusStop) intent.getSerializableExtra(BusStop.INTENT_KEY);
 
-			Log.d("AlarmReceiver","Received alarm for: "+arrival.getDestination());
+			Log.d(ALARM_RECEIVER,"Received alarm for: "+arrival.getDestination());
 
 			// Get reference to notification manager
 			NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -94,7 +96,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 		 */
 		} else if(intent.getAction().equals(BUS_ARRIVAL_FOLLOWUP)) {
 
-			Log.i("AlarmReceiver","We have a follow-up reminder");
+			Log.i(ALARM_RECEIVER,"We have a follow-up reminder");
 
 			// Get the Bus Arrival object out of intent
 			BusArrival arrival = (BusArrival) intent
