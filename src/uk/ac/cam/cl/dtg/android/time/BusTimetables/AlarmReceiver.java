@@ -56,10 +56,16 @@ public class AlarmReceiver extends BroadcastReceiver {
 			NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 			// Create notification
-			Notification notification = new Notification(R.drawable.bussmall, arrival.getDueTime().getArrivalTime() + " towards " + arrival.getDestination(), System.currentTimeMillis());
+			
+			Resources res = context.getResources();
+			String notificationText = String.format(res.getString(R.string.arrival_reminder),arrival.getDueTime(),arrival.getDestination());
+			Notification notification = new Notification(R.drawable.bussmall, notificationText, System.currentTimeMillis());
 			Intent i = new Intent(AlarmReceiver.BUS_ARRIVAL_REMINDER_CLICKED);
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, i, 0);
-			notification.setLatestEventInfo(context, arrival.getServiceID()+" towards "+arrival.getDestination(), arrival.getDueTime()+ " " + stop.getName(), pendingIntent);
+			
+			String notificationTitle = String.format(res.getString(R.string.arrival_reminder_title),arrival.getServiceID(), arrival.getDestination());
+			String notificationDesc = String.format(res.getString(R.string.arrival_reminder_desc),arrival.getDueTime(), stop.getName());
+			notification.setLatestEventInfo(context, notificationTitle, notificationDesc, pendingIntent);
 			notification.flags = Notification.FLAG_AUTO_CANCEL;
 			notification.vibrate = new long[] { 10, 400, 200, 400, 200, 400, 1000, 400, 200, 400, 200, 400 };
 
@@ -109,10 +115,14 @@ public class AlarmReceiver extends BroadcastReceiver {
 			NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 			// Create notification
-			Notification notification = new Notification(R.drawable.bussmall, "Was the bus on time?", System.currentTimeMillis());
+			Resources res = context.getResources();
+			
+			
+			Notification notification = new Notification(R.drawable.bussmall, res.getString(R.string.question_bus_ontime), System.currentTimeMillis());
 			Intent i = new Intent(AlarmReceiver.BUS_ARRIVAL_REMINDER_CLICKED);
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, i, 0);
-			notification.setLatestEventInfo(context, "Was the bus on time?", "Was the "+arrival.getDueTime().getArrivalTime()+" to "+arrival.getDestination()+" on time?", pendingIntent);
+			String notificationText = String.format(res.getString(R.string.question_bus_ontime_detailed),arrival.getDueTime().getArrivalTime(),arrival.getDestination());
+			notification.setLatestEventInfo(context, res.getString(R.string.question_bus_ontime), notificationText, pendingIntent);
 			notification.flags = Notification.FLAG_AUTO_CANCEL;
 			notification.vibrate = new long[] { 10, 400, 200, 400, 200, 400, 1000, 400, 200, 400, 200, 400 };
 
