@@ -1,6 +1,5 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -133,7 +132,7 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 			// make an intent and parcel up data
 			Intent i = new Intent(MapHighlightOverlay.HIGHLIGHT_INTENT);
-			i.putExtra("stop", stop);
+			i.putExtra(BusStop.INTENT_KEY, stop);
 			sendBroadcast(i);
 
 			break;
@@ -231,7 +230,7 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 		Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
 
 		Intent i = new Intent(this, BusStopActivity.class);
-		i.putExtra("stop",(Serializable)stop);
+		i.putExtra(BusStop.INTENT_KEY,stop);
 		this.startActivity(i);
 
 		boolean haptic = Preferences.getBool("haptics", true);

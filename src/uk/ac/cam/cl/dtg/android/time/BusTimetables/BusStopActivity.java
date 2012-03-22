@@ -80,7 +80,7 @@ public class BusStopActivity extends Activity implements Runnable {
 		} else {
 
 			// Fetch the bus stop we're looking at from intent's extras
-			currStop = (BusStop) this.getIntent().getSerializableExtra("stop");
+			currStop = (BusStop) this.getIntent().getSerializableExtra(BusStop.INTENT_KEY);
 
 		}
 
@@ -250,21 +250,21 @@ public class BusStopActivity extends Activity implements Runnable {
 		// Alarm at 10 mins
 		Intent i_long = new Intent(AlarmReceiver.BUS_ARRIVAL_REMINDER);
 		i_long.setData(Uri.parse("reminder://uk.ac.cam.cl.dtg.android.time.BusStopApp/"+Long.toString(target_long)));
-		i_long.putExtra("stop", currStop);
+		i_long.putExtra(BusStop.INTENT_KEY, currStop);
 		i_long.putExtra("arrival", arrival);		
 		PendingIntent alarm_long = PendingIntent.getBroadcast(this, 0, i_long, 0);
 
 		// Alarm just before the bus arrives
 		Intent i_1min = new Intent(AlarmReceiver.BUS_ARRIVAL_REMINDER);
 		i_1min.setData(Uri.parse("reminder://uk.ac.cam.cl.dtg.android.time.BusStopApp/"+Long.toString(target_1min)));
-		i_1min.putExtra("stop", currStop);
+		i_1min.putExtra(BusStop.INTENT_KEY, currStop);
 		i_1min.putExtra("arrival", arrival);		
 		PendingIntent alarm_1min = PendingIntent.getBroadcast(this, 0, i_1min, 0);
 
 		// Alarm after bus should have arrived, asking if the bus is on time
 		Intent i_follow = new Intent(AlarmReceiver.BUS_ARRIVAL_FOLLOWUP);
 		i_follow.setData(Uri.parse("reminder://uk.ac.cam.cl.dtg.android.time.BusStopApp/"+Long.toString(target_followup)));
-		i_follow.putExtra("stop", currStop);
+		i_follow.putExtra(BusStop.INTENT_KEY, currStop);
 		i_follow.putExtra("arrival", arrival);		
 		PendingIntent alarm_follow = PendingIntent.getBroadcast(this, 0, i_follow, 0);
 

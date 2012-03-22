@@ -44,8 +44,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 			Log.i("AlarmReceiver","We have a bus arrival reminder");
 
 			// Get the Bus Arrival object out of intent
-			BusArrival arrival = (BusArrival) intent.getSerializableExtra("arrival");
-			BusStop stop = (BusStop) intent.getSerializableExtra("stop");
+			BusArrival arrival = (BusArrival) intent
+					.getSerializableExtra("arrival");
+			BusStop stop = (BusStop) intent.getSerializableExtra(BusStop.INTENT_KEY);
 
 			Log.d("AlarmReceiver","Received alarm for: "+arrival.getDestination());
 
@@ -96,8 +97,12 @@ public class AlarmReceiver extends BroadcastReceiver {
 			Log.i("AlarmReceiver","We have a follow-up reminder");
 
 			// Get the Bus Arrival object out of intent
-			BusArrival arrival = (BusArrival) intent.getSerializableExtra("arrival");
-			BusStop stop = (BusStop) intent.getSerializableExtra("stop");
+			BusArrival arrival = (BusArrival) intent
+					.getSerializableExtra("arrival");
+
+			// Use this line to get the bus stop information out of the intent
+			// BusStop stop = (BusStop) intent.getSerializableExtra(BusStop.INTENT_KEY);
+			
 			// Get reference to notification manager
 			NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 

@@ -1,7 +1,5 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.io.Serializable;
-
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import android.app.ListActivity;
 import android.content.Context;
@@ -43,7 +41,7 @@ public class StarredStopsActivity extends ListActivity {
 			Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
 
 			Intent i = new Intent(this, BusStopActivity.class);
-			i.putExtra("stop",(Serializable)stop);
+			i.putExtra(BusStop.INTENT_KEY,stop);
 			this.startActivity(i);
 
 			boolean haptic = Preferences.getBool("haptics", true);

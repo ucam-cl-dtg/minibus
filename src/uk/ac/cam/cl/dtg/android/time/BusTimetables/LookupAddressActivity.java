@@ -1,6 +1,5 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -183,7 +182,7 @@ public class LookupAddressActivity extends ListActivity {
 		Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
 
 		Intent i = new Intent(this, BusStopActivity.class);
-		i.putExtra("stop",(Serializable)stop);
+		i.putExtra(BusStop.INTENT_KEY,stop);
 		this.startActivity(i);
 
 		boolean haptic = Preferences.getBool("haptics", true);

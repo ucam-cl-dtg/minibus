@@ -1,7 +1,5 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.io.Serializable;
-
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
@@ -241,7 +239,7 @@ public class AppMain extends TabActivity {
 		BusStop b = tdp.getStopBySMS(smsCode);
 		
 		Intent i = new Intent(this, BusStopActivity.class);		
-		i.putExtra("stop",(Serializable)b);		
+		i.putExtra(BusStop.INTENT_KEY,b);		
 		this.startActivity(i);
 		
 		

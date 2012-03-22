@@ -1,6 +1,5 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
@@ -172,7 +171,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 		// Show dialog
 		Intent in = new Intent(ourContext, BusStopActivity.class);
-		in.putExtra("stop",(Serializable)clickedMarker.busStop);
+		in.putExtra(BusStop.INTENT_KEY,clickedMarker.busStop);
 		ourContext.startActivity(in);
 		
 		boolean haptic = Preferences.getBool("haptics", true);
