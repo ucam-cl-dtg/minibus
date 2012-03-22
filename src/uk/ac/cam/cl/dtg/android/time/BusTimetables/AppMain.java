@@ -100,7 +100,7 @@ public class AppMain extends TabActivity {
 		db.finalize();
 		
 		// Should we display help to the user?
-		if(Preferences.getBool("show_map_help", true)) {
+		if (Preferences.getBool(Preferences.SHOW_MAP_HELP, true)) {
 			new AlertDialog.Builder(this)
 			.setTitle("Help")
 			.setMessage("Click red flags on the map to view information for a specific bus stop.")

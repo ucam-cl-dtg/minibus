@@ -8,6 +8,8 @@ import android.preference.PreferenceManager;
 public class Preferences {
 
 	public static final String REMINDER_ALARMTONE = "reminder_alarmtone";	
+	public static final String SHOW_MAP_HELP = "show_map_help";
+	
 	private static SharedPreferences prefs;
 	
 	static void openPrefs(Context context) {
@@ -41,5 +43,7 @@ public class Preferences {
 		return e.commit();
 		
 	}
+
+	
 
 }
