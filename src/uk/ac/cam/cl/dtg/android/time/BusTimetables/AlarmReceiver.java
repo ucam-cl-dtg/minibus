@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
@@ -47,7 +48,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 			// Get the Bus Arrival object out of intent
 			BusArrival arrival = (BusArrival) intent
-					.getSerializableExtra("arrival");
+					.getSerializableExtra(AppMain.ARRIVAL_INTENT_KEY);
 			BusStop stop = (BusStop) intent.getSerializableExtra(AppMain.BUSSTOP_INTENT_KEY);
 
 			Log.d(ALARM_RECEIVER,"Received alarm for: "+arrival.getDestination());
@@ -108,7 +109,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 			// Get the Bus Arrival object out of intent
 			BusArrival arrival = (BusArrival) intent
-					.getSerializableExtra("arrival");
+					.getSerializableExtra(AppMain.ARRIVAL_INTENT_KEY);
 
 			// Use this line to get the bus stop information out of the intent
 			// BusStop stop = (BusStop) intent.getSerializableExtra(BusStop.INTENT_KEY);

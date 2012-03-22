@@ -32,8 +32,9 @@ public class AppMain extends TabActivity {
 	private final int MENU_MY_LOCATION = 4;
 	
 	// For receiving search intents
-	protected final IntentFilter filter = new IntentFilter(Intent.ACTION_SEARCH);  
-
+	protected final IntentFilter filter = new IntentFilter(Intent.ACTION_SEARCH);
+	
+	public static final String ARRIVAL_INTENT_KEY = "arrival";  
 	public static final String BUSSTOP_INTENT_KEY = "stop";
 
 	/** Called when the activity is first created.*/

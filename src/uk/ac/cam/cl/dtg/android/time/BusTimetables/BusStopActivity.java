@@ -253,21 +253,21 @@ public class BusStopActivity extends Activity implements Runnable {
 		Intent i_long = new Intent(AlarmReceiver.BUS_ARRIVAL_REMINDER);
 		i_long.setData(Uri.parse("reminder://uk.ac.cam.cl.dtg.android.time.BusStopApp/"+Long.toString(target_long)));
 		i_long.putExtra(AppMain.BUSSTOP_INTENT_KEY, currStop);
-		i_long.putExtra("arrival", arrival);		
+		i_long.putExtra(AppMain.ARRIVAL_INTENT_KEY, arrival);		
 		PendingIntent alarm_long = PendingIntent.getBroadcast(this, 0, i_long, 0);
 
 		// Alarm just before the bus arrives
 		Intent i_1min = new Intent(AlarmReceiver.BUS_ARRIVAL_REMINDER);
 		i_1min.setData(Uri.parse("reminder://uk.ac.cam.cl.dtg.android.time.BusStopApp/"+Long.toString(target_1min)));
 		i_1min.putExtra(AppMain.BUSSTOP_INTENT_KEY, currStop);
-		i_1min.putExtra("arrival", arrival);		
+		i_1min.putExtra(AppMain.ARRIVAL_INTENT_KEY, arrival);		
 		PendingIntent alarm_1min = PendingIntent.getBroadcast(this, 0, i_1min, 0);
 
 		// Alarm after bus should have arrived, asking if the bus is on time
 		Intent i_follow = new Intent(AlarmReceiver.BUS_ARRIVAL_FOLLOWUP);
 		i_follow.setData(Uri.parse("reminder://uk.ac.cam.cl.dtg.android.time.BusStopApp/"+Long.toString(target_followup)));
 		i_follow.putExtra(AppMain.BUSSTOP_INTENT_KEY, currStop);
-		i_follow.putExtra("arrival", arrival);		
+		i_follow.putExtra(AppMain.ARRIVAL_INTENT_KEY, arrival);		
 		PendingIntent alarm_follow = PendingIntent.getBroadcast(this, 0, i_follow, 0);
 
 		
