@@ -73,8 +73,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 			manager.notify(NOTIFICATION_ARRIVAL_REMINDER, notification);
 
 			// Play ringtone
-			String tone = Preferences.getString("reminder_alarmtone","");
-			Log.d("GetAlarm","Tone file: ["+tone+"]");
+			String tone = Preferences.getString(Preferences.REMINDER_ALARMTONE,"");
+			
+			Log.d(ALARM_RECEIVER,"Tone file: ["+tone+"]");
+			
 			MediaPlayer mp = new MediaPlayer();
 
 			try {
