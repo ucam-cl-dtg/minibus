@@ -31,6 +31,8 @@ import android.widget.Toast;
 
 public class BusStopActivity extends Activity implements Runnable {
 
+	private static final String BUS_STOP_ACTIVITY = "BusStopActivity";
+	
 	// Thread to update the times
 	Thread updater;
 	private BusStop currStop;
@@ -62,7 +64,7 @@ public class BusStopActivity extends Activity implements Runnable {
 
 				// Grab the stop ref our of intent's URI
 				String ref = i.getData().getPath().replaceFirst("/", "");
-				Log.i("BusStopActivity","StopRef from activity is: "+ref);
+				Log.i(BUS_STOP_ACTIVITY,"StopRef from activity is: "+ref);
 
 				// Load stop from database
 				try {
@@ -85,7 +87,7 @@ public class BusStopActivity extends Activity implements Runnable {
 		}
 
 		// Debug
-		Log.i("BusStopActivity","Stop is: "+currStop);
+		Log.i(BUS_STOP_ACTIVITY,"Stop is: "+currStop);
 
 		// Request indeterminate progress wheel
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
