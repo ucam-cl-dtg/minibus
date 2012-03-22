@@ -34,6 +34,7 @@ public class AppMain extends TabActivity {
 	// For receiving search intents
 	protected final IntentFilter filter = new IntentFilter(Intent.ACTION_SEARCH);  
 
+	public static final String BUSSTOP_INTENT_KEY = "stop";
 
 	/** Called when the activity is first created.*/
 	@Override
@@ -239,7 +240,7 @@ public class AppMain extends TabActivity {
 		BusStop b = tdp.getStopBySMS(smsCode);
 		
 		Intent i = new Intent(this, BusStopActivity.class);		
-		i.putExtra(BusStop.INTENT_KEY,b);		
+		i.putExtra(BUSSTOP_INTENT_KEY,b);		
 		this.startActivity(i);
 		
 		

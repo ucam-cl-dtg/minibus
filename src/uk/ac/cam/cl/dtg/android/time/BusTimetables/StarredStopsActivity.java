@@ -41,7 +41,7 @@ public class StarredStopsActivity extends ListActivity {
 			Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
 
 			Intent i = new Intent(this, BusStopActivity.class);
-			i.putExtra(BusStop.INTENT_KEY,stop);
+			i.putExtra(AppMain.BUSSTOP_INTENT_KEY,stop);
 			this.startActivity(i);
 
 			boolean haptic = Preferences.getBool("haptics", true);

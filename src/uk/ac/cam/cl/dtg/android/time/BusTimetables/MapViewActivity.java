@@ -151,7 +151,7 @@ public class MapViewActivity extends MapActivity {
 			if(intent.getAction().equals(MapHighlightOverlay.HIGHLIGHT_INTENT)) {
 
 				Log.i("HighlightIntentReceiver","Got highlight message!");
-				BusStop stop = (BusStop)intent.getSerializableExtra(BusStop.INTENT_KEY);
+				BusStop stop = (BusStop)intent.getSerializableExtra(AppMain.BUSSTOP_INTENT_KEY);
 				Log.i("HighlightIntentReceiver","Stop is: "+stop.getLatitude());
 
 				highlightStop(stop);

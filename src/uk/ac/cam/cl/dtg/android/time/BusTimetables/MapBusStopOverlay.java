@@ -171,7 +171,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 		// Show dialog
 		Intent in = new Intent(ourContext, BusStopActivity.class);
-		in.putExtra(BusStop.INTENT_KEY,clickedMarker.busStop);
+		in.putExtra(AppMain.BUSSTOP_INTENT_KEY,clickedMarker.busStop);
 		ourContext.startActivity(in);
 		
 		boolean haptic = Preferences.getBool("haptics", true);

@@ -167,7 +167,7 @@ public class LookupStopActivity extends ListActivity {
 		Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
 
 		Intent i = new Intent(this, BusStopActivity.class);
-		i.putExtra(BusStop.INTENT_KEY,stop);
+		i.putExtra(AppMain.BUSSTOP_INTENT_KEY,stop);
 		
 		this.startActivity(i);
 
@@ -209,7 +209,7 @@ public class LookupStopActivity extends ListActivity {
 
 			// make an intent and parcel up data
 			Intent i = new Intent(MapHighlightOverlay.HIGHLIGHT_INTENT);
-			i.putExtra(BusStop.INTENT_KEY, stop);
+			i.putExtra(AppMain.BUSSTOP_INTENT_KEY, stop);
 			sendBroadcast(i);
 
 			break;
@@ -236,7 +236,7 @@ public class LookupStopActivity extends ListActivity {
 		Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
 
 		Intent i = new Intent(this, BusStopActivity.class);
-		i.putExtra(BusStop.INTENT_KEY,stop);
+		i.putExtra(AppMain.BUSSTOP_INTENT_KEY,stop);
 		this.startActivityForResult(i, 0);
 
 		boolean haptic = Preferences.getBool("haptics", true);

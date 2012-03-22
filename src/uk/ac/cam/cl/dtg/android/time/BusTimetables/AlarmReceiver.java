@@ -48,7 +48,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 			// Get the Bus Arrival object out of intent
 			BusArrival arrival = (BusArrival) intent
 					.getSerializableExtra("arrival");
-			BusStop stop = (BusStop) intent.getSerializableExtra(BusStop.INTENT_KEY);
+			BusStop stop = (BusStop) intent.getSerializableExtra(AppMain.BUSSTOP_INTENT_KEY);
 
 			Log.d(ALARM_RECEIVER,"Received alarm for: "+arrival.getDestination());
 
