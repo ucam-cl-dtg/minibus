@@ -32,26 +32,18 @@
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>${project.build.directory}/filtered-src</sourceDirectory>
 		<resources>
 			<resource>
 				<directory>${project.basedir}/res</directory>
 				<filtering>true</filtering>
 				<targetPath>${project.build.directory}/filtered-res</targetPath>
 				<includes>
-					<include>**/*.xml</include>
+					<include>**/map.xml</include>
 				</includes>
 			</resource>
 			<resource>
-				<directory>${project.basedir}/res</directory>
-				<filtering>false</filtering>
-				<targetPath>${project.build.directory}/filtered-res</targetPath>
-				<excludes>
-					<exclude>**/*.xml</exclude>
-				</excludes>
-			</resource>
-			<resource>
-				<directory>${project.basedir}/src-autogen</directory>
+				<directory>${project.basedir}/src</directory>
 				<filtering>true</filtering>
 				<targetPath>${project.build.directory}/filtered-src</targetPath>
 			</resource>
@@ -123,7 +115,7 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<version>3.1.1</version>
 				<configuration>
-					<resourceDirectory>${project.build.directory}/filtered-res</resourceDirectory>
+					<resourceOverlayDirectory>${project.build.directory}/filtered-res</resourceOverlayDirectory>
 					<file>${project.build.directory}/${project.artifactId}-aligned.apk</file>
 					<sdk>
 						<platform>4</platform>
@@ -220,7 +212,7 @@
 						<artifactId>maven-jarsigner-plugin</artifactId>
 						<configuration>
 							<keystore>${android.keystores}/debug.store</keystore>
-							<alias>android</alias>
+							<alias>androiddebugkey</alias>
 							<storepass>android</storepass>
 						</configuration>
 					</plugin>
