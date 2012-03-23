@@ -3,6 +3,7 @@ package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.ac.cam.cl.dtg.android.time.Constants;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
@@ -21,10 +22,6 @@ public class DataStore implements Runnable {
 	DataStoreHelper dsh;
 	private ProgressDialog pd;
 	private int dataToDownload = 1;
-
-	//TODO: both of these need to be made configurable at compile time rather than hard coded
-	public static final String feedURL = "http://www.cl.cam.ac.uk/research/dtg/transport/omnibus/";
-	public static final String apiKey = "[ELIDED]";
 
 	/**
 	 * Creates a new DataStore instance
@@ -324,7 +321,7 @@ public class DataStore implements Runnable {
 		List<BusStop> downloadedStops;
 		
 		// Create new TransportDataProvider
-		TransportDataProvider tdp = new TransportDataProvider(apiKey, feedURL);
+		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
 
 		Log.i("UpdateDB","Hello from thread. Trying to DL set "+dataToDownload);
 

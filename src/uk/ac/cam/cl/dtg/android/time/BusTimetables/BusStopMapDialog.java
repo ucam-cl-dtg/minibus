@@ -1,5 +1,6 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import uk.ac.cam.cl.dtg.android.time.Constants;
 import uk.ac.cam.cl.dtg.android.time.buses.BusArrivalData;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.LiveMapDataSource;
@@ -161,7 +162,7 @@ public class BusStopMapDialog extends Dialog implements Runnable {
 
 	     
 	     public void run() {
-	       TransportDataProvider tdp = new TransportDataProvider(DataStore.apiKey, DataStore.feedURL);
+	       TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
 	       try {
 	         nextBuses = tdp.getBusArrivalData(currentStop.getStopRef(), 5);
 	       } catch (TransportDataException e) {

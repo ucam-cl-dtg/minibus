@@ -1,5 +1,6 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import uk.ac.cam.cl.dtg.android.time.Constants;
 import uk.ac.cam.cl.dtg.android.time.buses.BusArrival;
 import uk.ac.cam.cl.dtg.android.time.buses.BusArrivalData;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
@@ -319,7 +320,7 @@ public class BusStopActivity extends Activity implements Runnable {
 	 */
 	public void run() {
 		
-		TransportDataProvider tdp = new TransportDataProvider(DataStore.apiKey, DataStore.feedURL);
+		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
 
 		while(keepUpdating) {
 

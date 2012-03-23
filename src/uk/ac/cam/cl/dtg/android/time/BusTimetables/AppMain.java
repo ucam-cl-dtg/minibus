@@ -1,5 +1,6 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import uk.ac.cam.cl.dtg.android.time.Constants;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
@@ -238,9 +239,8 @@ public class AppMain extends TabActivity {
 
 	private void doSMSLookup(String smsCode) throws TransportDataException {
 		// Lookup online
-		TransportDataProvider tdp = new TransportDataProvider(DataStore.apiKey,
-				DataStore.feedURL);
-
+		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
+			
 		BusStop b = tdp.getStopBySMS(smsCode);
 
 		Intent i = new Intent(this, BusStopActivity.class);

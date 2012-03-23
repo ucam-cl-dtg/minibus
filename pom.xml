@@ -26,6 +26,8 @@
 	</dependencies>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<omnibus.feedurl>http://www.cl.cam.ac.uk/research/dtg/transport/omnibus/</omnibus.feedurl>
+		<omnibus.apikey>${settings.omnibus.apikey}</omnibus.apikey>
 	</properties>
 
 	<build>
@@ -48,9 +50,14 @@
 					<exclude>**/*.xml</exclude>
 				</excludes>
 			</resource>
+			<resource>
+				<directory>${project.basedir}/src-autogen</directory>
+				<filtering>true</filtering>
+				<targetPath>${project.build.directory}/filtered-src</targetPath>
+			</resource>
 		</resources>
 
-		<plugins>
+		<plugins>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -70,6 +77,25 @@
 						<goals>
 							<goal>resources</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.build.directory}/filtered-src</source>
+							</sources>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -147,6 +173,25 @@
 										<ignore></ignore>
 									</action>
 								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											build-helper-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.7,)
+										</versionRange>
+										<goals>
+											<goal>add-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -166,6 +211,7 @@
 			</activation>
 			<properties>
 				<apikey.maps>0O8GpGK-0XQlnZCp7TblCxab59UdgsHKdNaO1oQ</apikey.maps>
+				<debug>true</debug>
 			</properties>
 			<build>
 				<plugins>
@@ -185,6 +231,7 @@
 			<id>release</id>
 			<properties>
 				<apikey.maps>0O8GpGK-0XQmsJRtUdxqFvfUWFkahdss-wym-cQ</apikey.maps>
+				<debug>false</debug>
 			</properties>
 			<build>
 				<plugins>
