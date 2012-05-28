@@ -46,3 +46,5 @@ Instructions on installing and building MiniBus using Eclipse.
 15. Right-click on the minibus project, select Run -> Android Application. Select the virutal device or handset on which to run MiniBus (if offered the choice).
 
 16. MiniBus should now load. It will not be able to display Map data or bus information as the source repository does not contain the API keys for these services. You should create your own keys for these services. **If you do add your own keys to the source code, and you want to make contributions to our repository, do not commit your keys!**
+
+17. To have minibus build correctly with maven you will need to specify the android.keystores property to be a directory containing debug.store (for non release builds) and minibus.keystore (for release builds).
