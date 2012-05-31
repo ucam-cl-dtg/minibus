@@ -38,7 +38,8 @@ public class LookupStopActivity extends ListActivity {
 	List<BusStop> nearbyStops;
 	List<Address> foundAddresses;
 	
-	public void onCreate(Bundle icicle) {
+	@Override
+  public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
 		
@@ -105,7 +106,8 @@ public class LookupStopActivity extends ListActivity {
 			.setTitle("Find stops near...")
 			.setItems(displayAddr.toArray(new String[]{ }),
 					new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
+				@Override
+        public void onClick(DialogInterface dialog, int which) {
 					selectAddress(which);
 				}
 
@@ -144,7 +146,8 @@ public class LookupStopActivity extends ListActivity {
 		// Set the long click handler
 		//TODO: this is duplicated
 		this.getListView().setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+			@Override
+      public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 				menu.setHeaderTitle("Bus stop actions");
 				menu.add(0, SHOW_ON_MAP, 0, "Show on map");
 				menu.add(0, SHOW_ARRIVALS_DEPS, 1, "Show arrivals / departures");
@@ -156,7 +159,8 @@ public class LookupStopActivity extends ListActivity {
 
 	}
 
-	protected void onListItemClick(ListView l, View v, int position, long id){
+	@Override
+  protected void onListItemClick(ListView l, View v, int position, long id){
 
 		super.onListItemClick(l, v, position, id);
 
@@ -193,7 +197,8 @@ public class LookupStopActivity extends ListActivity {
 	
 	// TODO: this is duplicated in NearbyStopActivity
 	
-	public boolean onContextItemSelected(MenuItem item) {
+	@Override
+  public boolean onContextItemSelected(MenuItem item) {
 
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo(); 
 

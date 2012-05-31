@@ -89,7 +89,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 				mp.setOnCompletionListener(new OnCompletionListener() {
 					
 					// So we tidily exit
-					public void onCompletion(MediaPlayer mp) {
+					@Override
+          public void onCompletion(MediaPlayer mp) {
 						mp.release();
 					}
 				});

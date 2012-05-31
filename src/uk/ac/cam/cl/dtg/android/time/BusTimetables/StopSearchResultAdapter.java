@@ -30,6 +30,7 @@ public class StopSearchResultAdapter extends ArrayAdapter<BusStop> {
             this.context=context; 
         } 
  
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) { 
         	
              

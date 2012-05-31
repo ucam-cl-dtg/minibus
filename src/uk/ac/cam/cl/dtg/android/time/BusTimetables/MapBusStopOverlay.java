@@ -228,7 +228,8 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 	}
 
-	protected void finalize() {
+	@Override
+  protected void finalize() {
 		conn.close();
 	}
 
@@ -268,7 +269,8 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	private Handler handler = new Handler() {
 
 		//@Override
-		@SuppressWarnings("unchecked")
+		@Override
+    @SuppressWarnings("unchecked")
 		public void handleMessage(Message msg) {
 
 			Log.i("Message handler","Got message: "+msg.arg1);
@@ -285,7 +287,8 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 	};
 
-	public void run() {
+	@Override
+  public void run() {
 
 		int oldZoomLevel = -1;
 		int oldLat = -1;

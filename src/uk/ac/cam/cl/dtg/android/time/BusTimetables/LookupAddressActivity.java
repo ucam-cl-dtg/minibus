@@ -47,21 +47,25 @@ public class LookupAddressActivity extends ListActivity {
 
 		findViewById(R.id.btnSearch).setOnClickListener(new OnClickListener() {
 
-			public void onClick(View arg0) {				
+			@Override
+      public void onClick(View arg0) {				
 				searchForAddress();				
 			} });
 		
 		editAddressQuery.setKeyListener(new KeyListener() {
 
-			public void clearMetaKeyState(View arg0, Editable arg1, int arg2) {
+			@Override
+      public void clearMetaKeyState(View arg0, Editable arg1, int arg2) {
 
 			}
 
-			public int getInputType() {
+			@Override
+      public int getInputType() {
 				return 1;
 			}
 
-			public boolean onKeyDown(View view, Editable text, int keyCode,
+			@Override
+      public boolean onKeyDown(View view, Editable text, int keyCode,
 					KeyEvent event) {
 				
 				Log.d("KeyDown","Key code: "+event.getDisplayLabel());
@@ -77,11 +81,13 @@ public class LookupAddressActivity extends ListActivity {
 				return false;
 			}
 
-			public boolean onKeyOther(View view, Editable text, KeyEvent event) {
+			@Override
+      public boolean onKeyOther(View view, Editable text, KeyEvent event) {
 				return false;
 			}
 
-			public boolean onKeyUp(View view, Editable text, int keyCode,
+			@Override
+      public boolean onKeyUp(View view, Editable text, int keyCode,
 					KeyEvent event) {
 				return false;
 			}
@@ -133,7 +139,8 @@ public class LookupAddressActivity extends ListActivity {
 			.setTitle("Find stops near...")
 			.setItems(displayAddr.toArray(new String[]{ }),
 					new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
+				@Override
+        public void onClick(DialogInterface dialog, int which) {
 					selectAddress(which);
 				}
 
@@ -171,7 +178,8 @@ public class LookupAddressActivity extends ListActivity {
 		}
 	}
 
-	protected void onListItemClick(ListView l, View v, int position, long id){
+	@Override
+  protected void onListItemClick(ListView l, View v, int position, long id){
 
 		super.onListItemClick(l, v, position, id);
 

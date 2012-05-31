@@ -114,7 +114,8 @@ public class AppMain extends TabActivity {
 					.setPositiveButton(
 							getText(R.string.database_empty_downloadnow),
 							new OnClickListener() {
-								public void onClick(DialogInterface arg0,
+								@Override
+                public void onClick(DialogInterface arg0,
 										int arg1) {
 									updateDatabase();
 								}

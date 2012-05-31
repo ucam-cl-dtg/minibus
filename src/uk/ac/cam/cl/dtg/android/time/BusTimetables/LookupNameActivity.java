@@ -32,13 +32,16 @@ public class LookupNameActivity extends ListActivity {
 
 		EditText editName = (EditText) findViewById(R.id.editNameInput);
 		editName.addTextChangedListener(new TextWatcher() {
-			public void afterTextChanged(Editable s) {
+			@Override
+      public void afterTextChanged(Editable s) {
 				// Log.i("TextChanged","after changed");
 			}
-			public void beforeTextChanged(CharSequence s, int start, int count,int after) {
+			@Override
+      public void beforeTextChanged(CharSequence s, int start, int count,int after) {
 				// Log.i("TextChanged","before changed");
 			}
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			@Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
 				searchTextChanged(s.toString());
 			}
 
@@ -67,7 +70,8 @@ public class LookupNameActivity extends ListActivity {
 
 	}
 
-	protected void onListItemClick(ListView l, View v, int position, long id){
+	@Override
+  protected void onListItemClick(ListView l, View v, int position, long id){
 
 		super.onListItemClick(l, v, position, id);
 

@@ -28,6 +28,7 @@ public class BusArrivalAdapter extends ArrayAdapter<BusArrival> {
             this.context=context; 
         } 
  
+        @Override
         public View getView(int position, View convertView, ViewGroup parent) { 
         	
              

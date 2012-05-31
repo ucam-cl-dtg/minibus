@@ -118,7 +118,8 @@ public class BusStopActivity extends Activity implements Runnable {
 		// Any future changes to the checkbox go through our listener (but previous change ^^^ doesn't)
 		favouriteCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener()
 		{
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+			@Override
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
 			{
 				Log.i("Fav checked!", "Should we save? "+isChecked);
 
@@ -130,7 +131,8 @@ public class BusStopActivity extends Activity implements Runnable {
 		// Set up context menu for long clicks on a departure
 		ListView list = (ListView) findViewById(R.id.NextBuses); 
 		list.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+			@Override
+      public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 				menu.setHeaderIcon(R.drawable.bus);
 				menu.setHeaderTitle("Bus options...");
 				menu.add(0, REMIND_ME, 0, "Set reminder");
@@ -182,7 +184,8 @@ public class BusStopActivity extends Activity implements Runnable {
 		if(nextBuses.NextBuses.size() == 0) textLastUpdate.setText("Sorry, there is no timetable information available for this stop at present.");
 	}
 
-	protected void onPause() {
+	@Override
+  protected void onPause() {
 		super.onPause();
 
 
@@ -190,7 +193,8 @@ public class BusStopActivity extends Activity implements Runnable {
 	}
 
 
-	protected void onResume() {
+	@Override
+  protected void onResume() {
 
 		super.onResume();
 
@@ -202,7 +206,8 @@ public class BusStopActivity extends Activity implements Runnable {
 
 	}
 
-	public boolean onContextItemSelected(MenuItem item) {
+	@Override
+  public boolean onContextItemSelected(MenuItem item) {
 
 		AdapterView.AdapterContextMenuInfo selectedMenuInfo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo(); 
 
@@ -291,7 +296,8 @@ public class BusStopActivity extends Activity implements Runnable {
 	private Handler handler = new Handler() {
 
 		//@Override
-		public void handleMessage(Message msg) {
+		@Override
+    public void handleMessage(Message msg) {
 
 
 			Log.i("Message handler","Got message: "+msg.arg1);
@@ -318,7 +324,8 @@ public class BusStopActivity extends Activity implements Runnable {
 	 * (non-Javadoc)
 	 * @see java.lang.Runnable#run()
 	 */
-	public void run() {
+	@Override
+  public void run() {
 		
 		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
 

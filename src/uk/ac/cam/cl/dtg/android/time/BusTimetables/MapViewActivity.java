@@ -68,7 +68,8 @@ public class MapViewActivity extends MapActivity {
 
 		locationOverlay = new MyLocationOverlay(this, mapView);
 		locationOverlay.runOnFirstFix(new Runnable() {
-			public void run() {
+			@Override
+      public void run() {
 				animateToLocation();
 			}
 		});

@@ -315,7 +315,8 @@ public class DataStore implements Runnable {
 
 	}
 
-	public void run() {
+	@Override
+  public void run() {
 
 		// Load in new bus stops
 		List<BusStop> downloadedStops;
@@ -367,7 +368,8 @@ public class DataStore implements Runnable {
 	private Handler handler = new Handler() {
 
 		//@Override
-		public void handleMessage(Message msg) {
+		@Override
+    public void handleMessage(Message msg) {
 
 			if(msg.arg1 == 0) pd.dismiss();
 

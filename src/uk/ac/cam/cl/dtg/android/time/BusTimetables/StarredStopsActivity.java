@@ -15,7 +15,8 @@ import android.widget.SimpleCursorAdapter;
 
 public class StarredStopsActivity extends ListActivity {
 
-	public void onCreate(Bundle icicle) {
+	@Override
+  public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
 		Preferences.openPrefs(this);
@@ -24,7 +25,8 @@ public class StarredStopsActivity extends ListActivity {
 	} 	
 
 
-	protected void onListItemClick(ListView l, View v, int position, long id){
+	@Override
+  protected void onListItemClick(ListView l, View v, int position, long id){
 
 		super.onListItemClick(l, v, position, id);
 
@@ -60,7 +62,8 @@ public class StarredStopsActivity extends ListActivity {
 
 	} 
 
-	protected void onResume() {
+	@Override
+  protected void onResume() {
 
 		super.onResume();
 

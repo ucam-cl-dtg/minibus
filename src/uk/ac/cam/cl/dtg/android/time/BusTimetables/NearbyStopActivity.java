@@ -40,7 +40,8 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 	private static final int SHOW_ON_MAP = 0;
 	private static final int SHOW_ARRIVALS_DEPS = 1;
 
-	protected void onCreate(Bundle savedInstanceState){
+	@Override
+  protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 	}
 
@@ -100,7 +101,8 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 			}
 
 			this.getListView().setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-				public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+				@Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
 					menu.setHeaderTitle("Bus stop actions");
 					menu.add(0, SHOW_ON_MAP, 0, "Show on map");
 					menu.add(0, SHOW_ARRIVALS_DEPS, 1, "Show arrivals / departures");
@@ -116,7 +118,8 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 	}
 
 
-	public boolean onContextItemSelected(MenuItem item) {
+	@Override
+  public boolean onContextItemSelected(MenuItem item) {
 
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo(); 
 
@@ -182,22 +185,26 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 	}
 
-	public void onLocationChanged(Location loc) {
+	@Override
+  public void onLocationChanged(Location loc) {
 		newLocation(loc);
 
 	}
 
-	public void onProviderDisabled(String provider) {
+	@Override
+  public void onProviderDisabled(String provider) {
 		Log.d("Location","Provider disabled: "+provider);
 
 	}
 
-	public void onProviderEnabled(String provider) {
+	@Override
+  public void onProviderEnabled(String provider) {
 		Log.d("Location","Provider enabled: "+provider);
 
 	}
 
-	public void onStatusChanged(String provider, int status, Bundle extras) {
+	@Override
+  public void onStatusChanged(String provider, int status, Bundle extras) {
 		Log.d("Location","Provider status change: "+provider+" to "+status);
 		
 		TextView txtStatus = (TextView)findViewById(R.id.txtStatus);
@@ -241,7 +248,8 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 	} 
 
-	protected void onListItemClick(ListView l, View v, int position, long id){
+	@Override
+  protected void onListItemClick(ListView l, View v, int position, long id){
 		super.onListItemClick(l, v, position, id);
 		showStopInfo(position);
 	}

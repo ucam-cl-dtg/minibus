@@ -32,7 +32,8 @@ public class BusStopAdapter extends ArrayAdapter<BusStop> {
 		this.context=context; 
 	} 
 
-	public View getView(int position, View convertView, ViewGroup parent) { 
+	@Override
+  public View getView(int position, View convertView, ViewGroup parent) { 
 
 
 		String units = Preferences.getString("unitsystem", "Metric");
