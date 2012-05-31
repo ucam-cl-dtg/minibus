@@ -1,5 +1,6 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import java.io.Closeable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-public class DataStore implements Runnable {
+public class DataStore implements Runnable, Closeable {
 
 	SQLiteDatabase conn;
 	DataStoreHelper dsh;
@@ -46,12 +47,19 @@ public class DataStore implements Runnable {
 	/**
 	 * Closes the connection to the underlying database
 	 */
-	public void finalize() {
-
-		Log.i("DataStore","Closing connection...");
+	@Override
+  public void finalize() throws Throwable {
 		conn.close();
+		super.finalize();
+  }
 
-	}
+  /**
+   * Closes the database
+   */
+  @Override
+  public void close() {
+    conn.close();
+  }
 
 	/**
 	 * Returns the number of bus stops held in the internal database

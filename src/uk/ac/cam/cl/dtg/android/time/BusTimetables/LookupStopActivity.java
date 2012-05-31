@@ -135,7 +135,7 @@ public class LookupStopActivity extends ListActivity {
 		// Ask the database for stops nearest this address
 		DataStore db = new DataStore(this, false);
 		nearbyStops = db.findNearestStops((int)(loc.getLatitude() * 1E6), (int)(loc.getLongitude() * 1E6), 10);
-		db.finalize();
+		db.close();
 		
 		// If we got some results...
 		if(nearbyStops.size() < 1) return;

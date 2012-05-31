@@ -93,8 +93,8 @@ public class AppMain extends TabActivity {
 		// How many bus stops installed?
 		DataStore db = new DataStore(this, false);
 		int stopsInstalled = db.getBusStopCount();
+    db.close();
 		Log.i(APP_MAIN, "Bus stops installed: " + stopsInstalled);
-		db.finalize();
 
 		// Should we display help to the user?
 		if (Preferences.getBool(Preferences.SHOW_MAP_HELP, true)) {

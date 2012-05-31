@@ -38,6 +38,7 @@ public class StarredStopsActivity extends ListActivity {
 		try {
 
 			BusStop stop = db.getStopById((int)id);
+			db.close();
 
 
 			Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());

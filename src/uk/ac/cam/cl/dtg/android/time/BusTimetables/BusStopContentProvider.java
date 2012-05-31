@@ -222,6 +222,7 @@ public class BusStopContentProvider extends ContentProvider {
 		// Otherwise, query datastore for similar bus stops
 		DataStore ds = new DataStore(getContext(), false);
 		List<BusStop> suggestions = ds.findStopsLike(q);
+		ds.close();
 		
 		// Add to cursor
 		for(BusStop suggestion : suggestions) {

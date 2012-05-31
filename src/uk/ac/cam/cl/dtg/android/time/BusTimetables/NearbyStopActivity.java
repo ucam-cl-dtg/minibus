@@ -34,7 +34,6 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 	ListView lv;
 	ListAdapter adapt;
 	List<BusStop> nearbyStops = new LinkedList<BusStop>();
-	DataStore ds;
 	boolean displayedMessage = false;
 
 	private static final int SHOW_ON_MAP = 0;
@@ -163,9 +162,9 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 		//dialog("Location update",loc.getLatitude()+"/"+loc.getLongitude());
 
 		// Ask the database for new
-		ds = new DataStore(this, false);
+		DataStore ds = new DataStore(this, false);
 		nearbyStops = ds.findNearestStops((int)(loc.getLatitude() * 1E6), (int)(loc.getLongitude() * 1E6), 10);
-		ds.finalize();
+		ds.close();
 
 		if(nearbyStops.size() > 0) {
 			this.setListAdapter(new BusStopAdapter(this, nearbyStops, loc)); 

@@ -168,7 +168,7 @@ public class LookupAddressActivity extends ListActivity {
 		// Ask the database for new
 		DataStore db = new DataStore(this, false);
 		nearbyStops = db.findNearestStops((int)(loc.getLatitude() * 1E6), (int)(loc.getLongitude() * 1E6), 10);
-		db.finalize();
+		db.close();
 
 
 		textInfo.setText("Stops close to "+selectedAddr.getAddressLine(0));

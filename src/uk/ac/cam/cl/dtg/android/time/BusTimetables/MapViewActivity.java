@@ -87,7 +87,7 @@ public class MapViewActivity extends MapActivity {
 		// How many bus stops installed?
 		DataStore db = new DataStore(this, false);
 		int stopsInstalled = db.getBusStopCount();
-		db.finalize();
+		db.close();
 
 		// Perform initial check to see if the database is empty. If so, show message.
 		if(stopsInstalled == 0) {			
