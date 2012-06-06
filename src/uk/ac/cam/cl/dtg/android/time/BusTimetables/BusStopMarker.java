@@ -10,13 +10,13 @@ public class BusStopMarker extends OverlayItem {
 	public BusStop busStop;
 
 	public BusStopMarker(BusStop stop, int late6, int longe6) {
-		super(new GeoPoint(late6, longe6), stop.getName(), stop.getStopRef());
+		super(new GeoPoint(late6, longe6), stop.getName(), stop.getAtcoCode());
 		
 		busStop = stop;
 	}
 	
 	public BusStopMarker(BusStop stop) {
-		super(getPoint(stop.getLatitude(),stop.getLongitude()), stop.getName(), stop.getStopRef());
+		super(getPoint(stop.getLatitude(),stop.getLongitude()), stop.getName(), stop.getAtcoCode());
 		
 		busStop = stop;
 	}

@@ -233,7 +233,7 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 		Object o = this.getListAdapter().getItem(position);
 		BusStop stop = (BusStop) o;
 
-		Log.i("Nearby","Clicked nearby stop: "+stop.getStopRef()+" "+stop.getName());
+		Log.i("Nearby","Clicked nearby stop: "+stop.getAtcoCode()+" "+stop.getName());
 
 		Intent i = new Intent(this, BusStopActivity.class);
 		i.putExtra(AppMain.BUSSTOP_INTENT_KEY,stop);

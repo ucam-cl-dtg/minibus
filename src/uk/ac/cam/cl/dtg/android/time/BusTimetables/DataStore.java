@@ -89,7 +89,7 @@ public class DataStore implements Runnable, Closeable {
 		clearFavourite(b);
 
 		String sql = "INSERT INTO favourites (stopRef) VALUES ("
-			+ "\"" + b.getStopRef()
+			+ "\"" + b.getAtcoCode()
 			+ "\")";
 
 		Log.i("DataStore","Saving favourite: SQL is: "+sql);
@@ -108,7 +108,7 @@ public class DataStore implements Runnable, Closeable {
 	 */
 	public void clearFavourite(BusStop b) {
 
-		String sql = "DELETE FROM favourites WHERE stopRef='"+b.getStopRef()+"'";
+		String sql = "DELETE FROM favourites WHERE stopRef='"+b.getAtcoCode()+"'";
 
 		Log.i("DataStore","Clearing favourite: SQL is: "+sql);
 		conn.execSQL(sql);
@@ -121,7 +121,7 @@ public class DataStore implements Runnable, Closeable {
 	 */
 	public boolean isFavourite(BusStop b) {
 
-		String sql = "SELECT * FROM favourites WHERE stopRef='"+b.getStopRef()+"'";
+		String sql = "SELECT * FROM favourites WHERE stopRef='"+b.getAtcoCode()+"'";
 
 		Cursor results = conn.rawQuery(sql, null);
 		boolean ret = (results.getCount()==0) ? false : true;
@@ -160,9 +160,9 @@ public class DataStore implements Runnable, Closeable {
 
 			for(BusStop stop : stops) {
 				sql = "INSERT INTO busstops (stopRef, stopName,stopSMS, latE6, longE6, dataSet) VALUES ("
-					+ "\"" + stop.getStopRef() + "\", "
+					+ "\"" + stop.getAtcoCode() + "\", "
 					+ "\"" + stop.getName() + "\", "
-					+ "\"" + stop.getSmsCode() + "\", "
+					+ "\"" + stop.getNaptanCode() + "\", "
 					+ (int)(stop.getLatitude() * 1E6) + ", "
 					+ (int)(stop.getLongitude() * 1E6) + ", "
 					+ "\"" + dataSet + "\""

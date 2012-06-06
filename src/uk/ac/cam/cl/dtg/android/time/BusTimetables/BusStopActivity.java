@@ -175,13 +175,13 @@ public class BusStopActivity extends Activity implements Runnable {
 
 		ListView list = (ListView) findViewById(R.id.NextBuses);   
 
-		Log.i("UpdateArrivals","Update the screen with "+nextBuses.NextBuses.size()+" buses");
+		Log.i("UpdateArrivals","Update the screen with "+nextBuses.getNextBuses().size()+" buses");
 
 		BusArrivalAdapter adapt = new BusArrivalAdapter(this, nextBuses);
 		adapt.rowView = R.layout.busstoparrivallarge;
 		list.setAdapter(adapt);
 
-		if(nextBuses.NextBuses.size() == 0) textLastUpdate.setText("Sorry, there is no timetable information available for this stop at present.");
+		if(nextBuses.getNextBuses().size() == 0) textLastUpdate.setText("Sorry, there is no timetable information available for this stop at present.");
 	}
 
 	@Override
@@ -340,7 +340,7 @@ public class BusStopActivity extends Activity implements Runnable {
 			// Get arrival data
 			if(currStop != null) {
 				try {
-					nextBuses = tdp.getBusArrivalData(currStop.getStopRef(), 30);
+					nextBuses = tdp.getBusArrivalData(currStop.getAtcoCode(), 30);
 
 					// Tell thread to update arrivals
 					m = Message.obtain();

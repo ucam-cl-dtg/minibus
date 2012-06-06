@@ -184,7 +184,7 @@ public class BusStopContentProvider extends ContentProvider {
 				i.setAction("uk.ac.cam.cl.dtg.android.time.STOPINFO");
 				i.putExtra("stop",(Serializable)stop);
 				
-				Object[] row = new Object[]{ c.getString(c.getColumnIndex(LiveFolders._ID)), stop.getName(), "content://uk.ac.cam.cl.dtg.android.time.BusStopApp/" + stop.getStopRef()};
+				Object[] row = new Object[]{ c.getString(c.getColumnIndex(LiveFolders._ID)), stop.getName(), "content://uk.ac.cam.cl.dtg.android.time.BusStopApp/" + stop.getAtcoCode()};
 						
 				mc.addRow(row);
 				c.moveToNext();
@@ -230,7 +230,7 @@ public class BusStopContentProvider extends ContentProvider {
 			Object[] row = new Object[5];
 			row[0] = suggestion.getMeta("_ID");
 			row[1] = suggestion.getName();
-			row[2] = suggestion.getStopRef();
+			row[2] = suggestion.getAtcoCode();
 			
 			Log.i("Suggestions","FavID meta is: "+suggestion.getMeta("FavId"));
 			Object favid = (Object)suggestion.getMeta("FavID");

@@ -21,7 +21,7 @@ public class BusArrivalAdapter extends ArrayAdapter<BusArrival> {
          BusArrivalAdapter(Activity context, BusArrivalData d ) { 
         	 
         	 
-            super(context, R.layout.busstoparrivalshort, d.NextBuses); 
+            super(context, R.layout.busstoparrivalshort, d.getNextBuses());
             inflater=context.getLayoutInflater();
             
            
