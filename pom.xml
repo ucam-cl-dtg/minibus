@@ -1,15 +1,33 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>uk.ac.cam.cl.dtg</groupId>
+		<artifactId>android</artifactId>
+		<version>1.0.2</version>
+	</parent>
 	<groupId>uk.ac.cam.cl.dtg.android.time</groupId>
 	<artifactId>BusTimetables</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>apk</packaging>
+
+	<!-- Build environment variables required in settings.xml -->
+
+	<!-- omnibus.release.apikey = API key to use for omnibus webservice -->
+	<!-- omnibus.release.feedurl = URL for webservice -->
+	<!-- (these two are also used in the debug build because currently we don't 
+		have a debug webservice available) -->
+
+	<!-- omnibus.release.mapskey = Maps API key for the release signing -->
+	<!-- omnibus.release.keystore = Keystore location for release signing -->
+	<!-- omnibus.release.keyalias = Release key alias in keystore -->
+
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
-			<version>1.6_r2</version>
+			<version>[4,5)</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -20,235 +38,12 @@
 		<dependency>
 			<groupId>com.google.android.maps</groupId>
 			<artifactId>maps</artifactId>
-			<version>3_r3</version>
+			<version>[4,5)</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<omnibus.feedurl>http://www.cl.cam.ac.uk/research/dtg/transport/omnibus/</omnibus.feedurl>
-		<omnibus.apikey>${settings.omnibus.apikey}</omnibus.apikey>
+		<release.keystore>${omnibus.release.keystore}</release.keystore>
+		<release.keyalias>${omnibus.release.keyalias}</release.keyalias>
 	</properties>
-
-	<build>
-		<finalName>${project.artifactId}</finalName>
-		<sourceDirectory>${project.build.directory}/filtered-src</sourceDirectory>
-		<resources>
-			<resource>
-				<directory>${project.basedir}/res</directory>
-				<filtering>true</filtering>
-				<targetPath>${project.build.directory}/filtered-res</targetPath>
-				<includes>
-					<include>**/map.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>${project.basedir}/src</directory>
-				<filtering>true</filtering>
-				<targetPath>${project.build.directory}/filtered-src</targetPath>
-			</resource>
-		</resources>
-
-		<plugins>			
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
-				<executions>
-					<execution>
-						<id>filter-resources</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/filtered-src</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jarsigner-plugin</artifactId>
-				<version>1.2</version>
-				<executions>
-					<execution>
-						<id>signing</id>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<includes>
-								<include>${project.build.directory}/${project.artifactId}.apk</include>
-							</includes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-				<artifactId>android-maven-plugin</artifactId>
-				<version>3.1.1</version>
-				<configuration>
-					<resourceOverlayDirectory>${project.build.directory}/filtered-res</resourceOverlayDirectory>
-					<file>${project.build.directory}/${project.artifactId}-aligned.apk</file>
-					<sdk>
-						<platform>4</platform>
-					</sdk>
-					<undeployBeforeDeploy>true</undeployBeforeDeploy>
-					<sign>
-						<debug>false</debug>
-					</sign>
-				</configuration>
-				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<id>alignApk</id>
-						<phase>package</phase>
-						<goals>
-							<goal>zipalign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-
-
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											com.jayway.maven.plugins.android.generation2
-										</groupId>
-										<artifactId>android-maven-plugin</artifactId>
-										<versionRange>[3.0.0,)</versionRange>
-										<goals>
-											<goal>proguard</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											build-helper-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.7,)
-										</versionRange>
-										<goals>
-											<goal>add-source</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-
-	<profiles>
-		<profile>
-			<id>debug</id>
-			<activation>
-				<property>
-					<name>environment</name>
-					<value>!release</value>
-				</property>
-			</activation>
-			<properties>
-				<apikey.maps>0O8GpGK-0XQlnZCp7TblCxab59UdgsHKdNaO1oQ</apikey.maps>
-				<debug>true</debug>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jarsigner-plugin</artifactId>
-						<configuration>
-							<keystore>${android.keystores}/debug.store</keystore>
-							<alias>androiddebugkey</alias>
-							<storepass>android</storepass>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>release</id>
-			<properties>
-				<apikey.maps>0O8GpGK-0XQmsJRtUdxqFvfUWFkahdss-wym-cQ</apikey.maps>
-				<debug>false</debug>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jarsigner-plugin</artifactId>
-						<configuration>
-							<keystore>${android.keystores}/minibus.keystore</keystore>
-							<alias>minibus</alias>
-							<storepass>${storepass}</storepass>
-						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-						<artifactId>android-maven-plugin</artifactId>
-						<configuration>
-							<manifest>
-								<debuggable>false</debuggable>
-								<versionCodeAutoIncrement>false</versionCodeAutoIncrement>
-							</manifest>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
