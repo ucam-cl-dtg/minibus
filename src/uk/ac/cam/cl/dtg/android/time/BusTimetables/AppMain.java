@@ -242,7 +242,7 @@ public class AppMain extends TabActivity {
 		// Lookup online
 		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
 			
-		BusStop b = tdp.getStopBySMS(smsCode);
+		BusStop b = tdp.getStopByNaptan(smsCode);
 
 		Intent i = new Intent(this, BusStopActivity.class);
 		i.putExtra(BUSSTOP_INTENT_KEY, b);
