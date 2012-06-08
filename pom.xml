@@ -7,7 +7,7 @@
 		<version>1.0.2</version>
 	</parent>
 	<groupId>uk.ac.cam.cl.dtg.android.time</groupId>
-	<artifactId>BusTimetables</artifactId>
+	<artifactId>minibus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>apk</packaging>
 
