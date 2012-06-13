@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 public class Preferences {
 
+  private static final String LOG = Preferences.class.getCanonicalName();
 	public static final String REMINDER_ALARMTONE = "reminder_alarmtone";	
 	public static final String SHOW_MAP_HELP = "show_map_help";
 	private static final String LAST_UPDATED = "last_updated";
@@ -49,7 +51,10 @@ public class Preferences {
 	 * @return
 	 */
 	static boolean shouldUpdate(){
-	  return prefs.getLong(LAST_UPDATED, 0) < (System.currentTimeMillis() - 1000*60*60*24*31);
+	  long lastUpdated = prefs.getLong(LAST_UPDATED, 0);
+	  long minUpdate = System.currentTimeMillis() - 1000L*60L*60L*24L*31L;
+	  Log.i(LOG,"Last updated: " + lastUpdated + " min update: " + minUpdate);
+	  return lastUpdated < minUpdate;
 	}
 
 	static boolean setUpdated() {
