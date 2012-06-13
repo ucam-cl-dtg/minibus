@@ -32,14 +32,14 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	// The mapview we're on.
 	MapView theMap;
 
-	// The last time we calculated detail levels
+	/** The last time we calculated detail levels*/
 	private long lastDetailCalc = 0;
 
-	// how many millis to wait before we calc new detail levels
+	/** how many millis to wait before we calc new detail levels*/
 	private static long detailStep = 500;
 
-	// Zoom level below (i.e. farther our than) which we don't both showing markers
-	private int maxMarkersZoomLevel = 12;
+	/** Zoom level below (i.e. farther our than) which we don't both showing markers*/
+	private int maxMarkersZoomLevel = 9;
 
 	// connection to the database
 	private DataStoreHelper dsh;
@@ -56,7 +56,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	private int mapLongSpan = 0;
 	private int mapZoomLevel = 0;
 
-	// If set to true, the refresh markers thread will continue running
+	/** If set to true, the refresh markers thread will continue running */
 	private boolean performUpdates = true;
 
 
