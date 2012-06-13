@@ -3,6 +3,7 @@ package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
 import java.util.List;
 
+import uk.ac.cam.cl.dtg.android.time.BusTimetables.Preferences.UNITS;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import android.content.Context;
 import android.location.Location;
@@ -36,7 +37,7 @@ public class BusStopAdapter extends ArrayAdapter<BusStop> {
   public View getView(int position, View convertView, ViewGroup parent) { 
 
 
-		String units = Preferences.getString("unitsystem", "Metric");
+		UNITS units = Preferences.getUnits();
 
 		View row=inflater.inflate(R.layout.nearbystoprow, null); 
 
@@ -66,7 +67,7 @@ public class BusStopAdapter extends ArrayAdapter<BusStop> {
 		String displayDist;
 
 
-		if(units.equals("Metric")) {
+		if(units.equals(UNITS.Metric)) {
 			if(finaldist > 1000) {
 				suffix = "km";
 				finaldist = (int)(Math.round((double)finaldist/100));

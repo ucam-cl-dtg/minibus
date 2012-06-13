@@ -215,7 +215,7 @@ public class BusStopActivity extends Activity implements Runnable {
 		case REMIND_ME:
 
 			// To get the id of the clicked item in the list use menuInfo.id
-			Log.d("ContextMenu", "Remind me with ringtone: "+Preferences.getString("alarmtone", ""));
+			Log.d("ContextMenu", "Remind me with ringtone: "+Preferences.getString(Preferences.REMINDER_ALARMTONE, ""));
 			setAlarm(selectedMenuInfo.position);
 
 			break;
