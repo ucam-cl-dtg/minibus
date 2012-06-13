@@ -8,6 +8,7 @@ import uk.ac.cam.cl.dtg.android.time.Constants;
 import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -24,6 +25,8 @@ public class DataStore implements Runnable, Closeable {
 	DataStoreHelper dsh;
 	private ProgressDialog pd;
 	private int dataToDownload = 1;
+  private Runnable finishedCallback;
+  private Activity finishedContext;
 
 	/**
 	 * Creates a new DataStore instance
@@ -302,7 +305,7 @@ public class DataStore implements Runnable, Closeable {
 	 * 
 	 * Clears the current version of the bus stop database held and re-downloads.
 	 */
-	public void updateDatabase(Context con) {
+	public void updateDatabase(Activity con, Runnable finishedCallback) {
 
 		// Clear database first
 		clearStops();
@@ -310,6 +313,8 @@ public class DataStore implements Runnable, Closeable {
 		Log.i("UpdateDB","Beginning database update");
 		pd = ProgressDialog.show(con, "Please wait...", "Downloading database. This may take a few minutes...", true, false);
 		pd.setIcon(0);
+		this.finishedContext = con;
+		this.finishedCallback = finishedCallback;
 		Thread thread = new Thread(this);
 		thread.start();
 
@@ -372,7 +377,12 @@ public class DataStore implements Runnable, Closeable {
 		@Override
     public void handleMessage(Message msg) {
 
-			if(msg.arg1 == 0) pd.dismiss();
+      if (msg.arg1 == DISMIS) {
+        pd.dismiss();
+        if (finishedContext != null && finishedCallback != null){
+        finishedContext.runOnUiThread(finishedCallback);
+        }
+      }
 
 			if(msg.arg1 == UPDATE) {
 				pd.setMessage((String)msg.obj);

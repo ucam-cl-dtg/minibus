@@ -188,10 +188,16 @@ public class AppMain extends TabActivity {
 
 	}
 
-	private void updateDatabase() {
-		DataStore ds = new DataStore(this, true);
-		ds.updateDatabase(this);
-	}
+  private void updateDatabase() {
+    DataStore ds = new DataStore(this, true);
+    ds.updateDatabase(this, new Runnable() {
+
+      @Override
+      public void run() {
+        sendBroadcast(new Intent(MapViewActivity.REFRESH_INTENT));
+      }
+    });
+  }
 
 	private void showSettings() {
 		Intent i = new Intent(this, SettingsActivity.class);

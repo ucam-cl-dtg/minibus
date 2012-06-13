@@ -39,11 +39,12 @@ public class MapViewActivity extends MapActivity {
 
 	// Declare intent filters and receivers for us to use
 	public static final String MY_LOCATION_INTENT = "uk.ac.cam.cl.dtg.android.time.BusTimetables.MY_LOCATION_INTENT";
+  public static final String REFRESH_INTENT = "uk.ac.cam.cl.dtg.android.time.BusTimetables.REFRESH_INTENT";
 	protected final IntentFilter filter = new IntentFilter(
 			MapHighlightOverlay.HIGHLIGHT_INTENT);
 	private MapViewIntentReceiver receiver = new MapViewIntentReceiver();
-	protected final IntentFilter locationfilter = new IntentFilter(
-			MY_LOCATION_INTENT);
+	protected final IntentFilter locationfilter = new IntentFilter(MY_LOCATION_INTENT);
+	protected final IntentFilter refreshFilter = new IntentFilter(REFRESH_INTENT);
 
 	/** Called when the activity is first created. */
 	@Override
@@ -92,6 +93,7 @@ public class MapViewActivity extends MapActivity {
 		// Bind the intent receiver to the filter
 		registerReceiver(receiver, filter);
 		registerReceiver(receiver, locationfilter);
+		registerReceiver(receiver, refreshFilter);
 
 		// TODO: make map zoom to 52.199499;0.128403 if there are no bus stops
 		// in DB
@@ -179,6 +181,8 @@ public class MapViewActivity extends MapActivity {
 			} else if (intent.getAction().equals(MY_LOCATION_INTENT)) {
 
 				animateToLocation();
+			} else if (intent.getAction().equals(REFRESH_INTENT)){
+			  itemizedOverlay.refreshMarkers();
 			}
 
 		}
