@@ -9,6 +9,7 @@ import uk.ac.cam.cl.dtg.android.time.buses.BusStop;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataException;
 import uk.ac.cam.cl.dtg.android.time.data.TransportDataProvider;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -147,9 +148,7 @@ public class DataStore implements Runnable, Closeable {
 	 * @param stops List of bus stops
 	 * @param dataSet String representation of the data set the stops came from
 	 */
-	public void insertStops(List<BusStop> stops, String dataSet) {
-
-		String sql;
+	public void insertStops(List<BusStop> stops, int dataSet) {
 
 		Log.i("UpdateDB","Attempting to insert "+stops.size()+" stops into DB");
 
@@ -159,34 +158,28 @@ public class DataStore implements Runnable, Closeable {
 		try {
 
 			for(BusStop stop : stops) {
-				sql = "INSERT INTO busstops (stopRef, stopName,stopSMS, latE6, longE6, dataSet) VALUES ("
-					+ "\"" + stop.getAtcoCode() + "\", "
-					+ "\"" + stop.getName() + "\", "
-					+ "\"" + stop.getNaptanCode() + "\", "
-					+ (int)(stop.getLatitude() * 1E6) + ", "
-					+ (int)(stop.getLongitude() * 1E6) + ", "
-					+ "\"" + dataSet + "\""
-					+" )";
+				ContentValues values = new ContentValues();
+				values.put("stopRef", stop.getAtcoCode());
+				values.put("stopName", stop.getName());
+				values.put("stopSMS", stop.getNaptanCode());
+				values.put("latE6",(int)(stop.getLatitude() * 1E6));
+				values.put("longE6", (int)(stop.getLongitude() * 1E6));
+				values.put("dataSet",dataSet);
 
-				conn.execSQL(sql);	
-
+				conn.insert("busstops", null, values);
 
 				//Log.i("InsertStop",sql);
 			}
 
-			Log.i("UpdateDB","Finished inserts");
-
 			conn.setTransactionSuccessful();
 
-			Log.i("UpdateDB","Committed.");
+			Log.i("UpdateDB","Finished inserts, Committed.");
 
 		} catch(SQLiteException e) {
 			Log.e("DataStore",e.getMessage());
 		} finally {
 			conn.endTransaction();
 		}
-
-		//Cursor c = conn.
 	}
 
 	/**
@@ -327,8 +320,7 @@ public class DataStore implements Runnable, Closeable {
   public void run() {
 
 		// Load in new bus stops
-		List<BusStop> downloadedStops;
-		
+
 		// Create new TransportDataProvider
 		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
 
@@ -342,20 +334,20 @@ public class DataStore implements Runnable, Closeable {
 				
 				Message m;
 				m = Message.obtain();
-				m.arg1 = 1;
+				m.arg1 = UPDATE;
 				m.obj = "Downloading and unpacking definitions ("+i+"/3)...";
 				handler.sendMessage(m);
 
-				downloadedStops = tdp.getBusStops(i);
+				List<BusStop> downloadedStops = tdp.getBusStops(i);
 
 				m = Message.obtain();
-				m.arg1 = 1;
+				m.arg1 = UPDATE;
 				m.obj = "Installing definitions ("+downloadedStops.size()+" new)...";
 				handler.sendMessage(m);
 
 				Log.i("UpdateDB","Got "+downloadedStops.size()+" definitions");
 
-				insertStops(downloadedStops, Integer.toString(i));
+				insertStops(downloadedStops, i);
 
 			}
 
@@ -367,21 +359,22 @@ public class DataStore implements Runnable, Closeable {
 			Log.e("AppMain", cause + " " + ((cause != null) ? Log.getStackTraceString(e.getCause()) : Log.getStackTraceString(e)));
 		}
 
-		handler.sendEmptyMessage(0);
+		handler.sendEmptyMessage(DISMIS);
 
 	}
 
 
 
+	private static final int DISMIS = 0;
+	private static final int UPDATE = 1;
 	private Handler handler = new Handler() {
 
-		//@Override
 		@Override
     public void handleMessage(Message msg) {
 
 			if(msg.arg1 == 0) pd.dismiss();
 
-			if(msg.arg1 == 1) {
+			if(msg.arg1 == UPDATE) {
 				pd.setMessage((String)msg.obj);
 			}
 
