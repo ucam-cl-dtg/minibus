@@ -36,7 +36,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	private long lastDetailCalc = 0;
 
 	// how many millis to wait before we calc new detail levels
-	private static long detailStep = 1000;
+	private static long detailStep = 500;
 
 	// Zoom level below (i.e. farther our than) which we don't both showing markers
 	private int maxMarkersZoomLevel = 12;
