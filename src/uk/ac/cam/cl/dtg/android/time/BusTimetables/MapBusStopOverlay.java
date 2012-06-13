@@ -23,7 +23,7 @@ import com.google.android.maps.MapView;
 public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements Runnable {
 
 	// Collection of map markers in live usage
-	private ArrayList<BusStopMarker> Markers = new ArrayList<BusStopMarker>();
+	private ArrayList<BusStopMarker> markers = new ArrayList<BusStopMarker>();
 
 	// The context in which we were created (store pointer just so we can fire
 	// a dialog
@@ -36,7 +36,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	private long lastDetailCalc = 0;
 
 	// how many millis to wait before we calc new detail levels
-	private static long DetailStep = 1000;
+	private static long detailStep = 1000;
 
 	// Zoom level below (i.e. farther our than) which we don't both showing markers
 	private int maxMarkersZoomLevel = 12;
@@ -95,11 +95,11 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	/**
 	 * Recalculates which markers are visible, and displays them on the map
 	 */
-	public void RefreshMarkers() {
+	public void refreshMarkers() {
 
 		long time = System.currentTimeMillis();
 
-		if(time - lastDetailCalc > DetailStep) {
+		if(time - lastDetailCalc > detailStep) {
 
 			GeoPoint centre = theMap.getMapCenter();
 
@@ -131,8 +131,8 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 				}
 
 
-				Log.i("RefreshMarkers","There are now "+Markers.size()+" markers on map.");
-				Markers = temp;
+				Log.i("RefreshMarkers","There are now "+markers.size()+" markers on map.");
+				markers = temp;
 
 				setLastFocusedIndex(-1); 
 				populate();
@@ -156,7 +156,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 	@Override
 	protected BusStopMarker createItem(int i) {
-		return Markers.get(i);
+		return markers.get(i);
 	}
 
 	/**
@@ -167,7 +167,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	protected boolean onTap(int i) { 
 
 		// Fetch the marker the user selected
-		BusStopMarker clickedMarker = Markers.get(i);
+		BusStopMarker clickedMarker = markers.get(i);
 
 		// Show dialog
 		Intent in = new Intent(ourContext, BusStopActivity.class);
@@ -188,7 +188,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 	public boolean onTouchEvent(MotionEvent event, MapView mv) {
 
 		/*	if(mv.getZoomLevel() < maxMarkersZoomLevel) {
-			Markers.clear();
+			markers.clear();
 		} else {
 			RefreshMarkers();
 		}*/
@@ -222,7 +222,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 	protected void updateMarkers(ArrayList<BusStopMarker> newMarkers) {
 
-		Markers = newMarkers;
+		markers = newMarkers;
 		setLastFocusedIndex(-1); 
 		populate();		
 
@@ -235,7 +235,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 	@Override
 	public int size() {
-		return Markers.size();
+		return markers.size();
 	}
 
 	private void cacheMapData() {
@@ -333,7 +333,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 					}
 
-					//Log.i("RefreshMarkers","There are now "+Markers.size()+" markers on map.");
+					//Log.i("RefreshMarkers","There are now "+markers.size()+" markers on map.");
 
 					// Send new markers back to UI thread
 					Message m = Message.obtain();
@@ -361,7 +361,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 			}
 
 			try {
-				Thread.sleep(DetailStep);
+				Thread.sleep(detailStep);
 			} catch (InterruptedException e) {// if interupted just continue
 			}
 
