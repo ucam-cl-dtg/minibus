@@ -33,10 +33,15 @@
 <string name="question_bus_ontime_detailed">Was the %1$tH:%1$tM to %2$s on time?</string>
 <string name="getting_started_text">Click red flags on the map to view information for a specific bus stop.</string>
 <string name="getting_started_title">Help</string>
+
 <string name="database_empty_title">Database empty</string>
 <string name="database_empty_text">The phone\'s bus stop database is empty. Do you want to download the latest bus stop information now?</string>
 <string name="database_empty_downloadnow">Download now</string>
 <string name="database_empty_downloadlater">Later</string>
+<string name="database_update_title">Old database</string>
+<string name="database_update_text">The phone\'s bus stop database is old. Do you want to download the latest bus stop information now?</string>
+<string name="database_update_downloadnow">Download now</string>
+<string name="database_update_downloadlater">Later</string>
 
 <string name="menu_my_location">My location</string>
 <string name="menu_update_stops">Update stops</string>

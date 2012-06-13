@@ -9,6 +9,7 @@ public class Preferences {
 
 	public static final String REMINDER_ALARMTONE = "reminder_alarmtone";	
 	public static final String SHOW_MAP_HELP = "show_map_help";
+	private static final String LAST_UPDATED = "last_updated";
 	
 	private static SharedPreferences prefs;
 	
@@ -43,7 +44,27 @@ public class Preferences {
 		return e.commit();
 		
 	}
+	/**
+	 * If we last updated over a month ago then do a new update
+	 * @return
+	 */
+	static boolean shouldUpdate(){
+	  return prefs.getLong(LAST_UPDATED, 0) < (System.currentTimeMillis() - 1000*60*60*24*31);
+	}
 
-	
+	static boolean setUpdated() {
+	  Editor e = prefs.edit();
+	  e.putLong(LAST_UPDATED, System.currentTimeMillis());
+	  return e.commit();
+	}
 
+	static UNITS getUnits() {
+	  if (UNITS.Imperial.toString().equals(getString("unitsystem", UNITS.Metric.toString()))){
+	    return UNITS.Imperial;
+	  } else {
+	    return UNITS.Metric;//default
+	  }
+	}
+
+	public static enum UNITS {Metric,Imperial};
 }

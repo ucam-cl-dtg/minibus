@@ -123,6 +123,22 @@ public class AppMain extends TabActivity {
 					.setNeutralButton(
 							getText(R.string.database_empty_downloadlater),
 							null).show();
+		} else if (Preferences.shouldUpdate()){
+		  new AlertDialog.Builder(this)
+		  .setTitle(getText(R.string.database_update_title))
+		  .setMessage(getText(R.string.database_update_text))
+		  .setPositiveButton(
+		      getText(R.string.database_update_downloadnow),
+		      new OnClickListener() {
+		        @Override
+		        public void onClick(DialogInterface arg0,
+		            int arg1) {
+		          updateDatabase();
+		        }
+		      })
+		      .setNeutralButton(
+		          getText(R.string.database_update_downloadlater),
+		          null).show();
 		}
 
 		// Setup search UI
@@ -195,6 +211,7 @@ public class AppMain extends TabActivity {
       @Override
       public void run() {
         sendBroadcast(new Intent(MapViewActivity.REFRESH_INTENT));
+        Preferences.setUpdated();
       }
     });
   }
