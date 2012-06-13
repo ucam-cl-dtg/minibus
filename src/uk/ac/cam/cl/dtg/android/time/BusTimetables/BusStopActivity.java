@@ -300,7 +300,7 @@ public class BusStopActivity extends Activity implements Runnable {
     public void handleMessage(Message msg) {
 
 
-			Log.i("Message handler","Got message: "+msg.arg1);
+			//Log.i("Message handler","Got message: "+msg.arg1);
 
 			if(msg.arg1 == 0) {
 				setTitle((String)msg.obj);
