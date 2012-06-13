@@ -151,10 +151,16 @@ public class DataStore implements Runnable, Closeable {
 	 * @param stops List of bus stops
 	 * @param dataSet String representation of the data set the stops came from
 	 */
-	public void insertStops(List<BusStop> stops, int dataSet) {
+	public void insertStops(List<BusStop> stops, int dataSet) throws SQLiteException {
 
 		Log.i("UpdateDB","Attempting to insert "+stops.size()+" stops into DB");
 
+    try {
+      while (conn.isDbLockedByOtherThreads()) {
+        Thread.sleep(100);
+      }
+    } catch (InterruptedException e) {// if interrupted stop looping
+    }
 		conn.beginTransaction();
 
 		Log.i("UpdateDB","Transation begun");
@@ -352,7 +358,11 @@ public class DataStore implements Runnable, Closeable {
 
 				Log.i("UpdateDB","Got "+downloadedStops.size()+" definitions");
 
-				insertStops(downloadedStops, i);
+        try {
+          insertStops(downloadedStops, i);
+        } catch (SQLiteException e) {
+          throw new TransportDataException("Error while storing stops", e);
+        }
 
 			}
 
