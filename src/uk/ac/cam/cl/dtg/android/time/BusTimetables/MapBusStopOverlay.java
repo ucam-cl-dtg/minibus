@@ -108,7 +108,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 			int t = centre.getLatitudeE6() + (int)(theMap.getLatitudeSpan() / 2);
 			int b = centre.getLatitudeE6() - (int)(theMap.getLatitudeSpan() / 2);
 
-			String sql = "SELECT * FROM busstops WHERE longE6 > "+ l + " AND longE6 < "+r+" AND latE6 > " + b + " AND latE6 < "+t+" ORDER BY dataSet ASC LIMIT 20";
+			String sql = "SELECT * FROM busstops WHERE longE6 > "+ l + " AND longE6 < "+r+" AND latE6 > " + b + " AND latE6 < "+t+" ORDER BY dataSet ASC LIMIT 80";
 
 			try {
 				Log.i("RefreshMarkers","SQL query is" + sql);
@@ -273,7 +273,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
     @SuppressWarnings("unchecked")
 		public void handleMessage(Message msg) {
 
-			Log.i("Message handler","Got message: "+msg.arg1);
+			//Log.i("Message handler","Got message: "+msg.arg1);
 
 			// Update markers
 			if(msg.arg1 == 0) {
@@ -297,8 +297,6 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 		while(performUpdates) {
 
-			long time = System.currentTimeMillis();
-
 			cacheMapData();
 
 			// Has either the zoom level or the maps centre changed since last call?
@@ -308,16 +306,22 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 
 				//Log.i("RefreshMarkers","Running update");
 
-				int l = mapCentre.getLongitudeE6() - (int)(mapLongSpan / 2);
-				int r = mapCentre.getLongitudeE6() + (int)(mapLongSpan / 2);
-				int t = mapCentre.getLatitudeE6() + (int)(mapLatSpan / 2);
-				int b = mapCentre.getLatitudeE6() - (int)(mapLatSpan / 2);
+				// Select an area twice the size of the screen to be the focus region
+				int mcLong = mapCentre.getLongitudeE6();
+				int mcLat = mapCentre.getLatitudeE6();
+				int l = mcLong - (int)(mapLongSpan/2);
+				int r = mcLong + (int)(mapLongSpan/2);
+				int t = mcLat + (int)(mapLatSpan/2);
+				int b = mcLat - (int)(mapLatSpan/2);
 
-				String sql = "SELECT * FROM busstops WHERE longE6 > "+ l + " AND longE6 < "+r+" AND latE6 > " + b + " AND latE6 < "+t+" ORDER BY dataSet ASC LIMIT 20";
+				String sql = String.format("SELECT *, abs(longE6%s%d) + abs(latE6%s%d) AS distance " +
+						"FROM busstops WHERE longE6 > %d AND longE6 < %d AND latE6 > %d AND latE6 < %d " +
+						"ORDER BY dataSet ASC, distance ASC LIMIT 100",
+				    (mcLong<0 ? "+" : "-"),mcLong,(mcLat<0 ? "+" : "-"),mcLat,l,r,b,t);//sqlite doesn't like -- so we must translate to +
 
 				try {
 
-					if(mapZoomLevel > maxMarkersZoomLevel) {						
+					if(mapZoomLevel > maxMarkersZoomLevel) {
 						
 						Cursor markersInView = conn.rawQuery(sql, null);
 						markersInView.moveToFirst();
@@ -346,7 +350,7 @@ public class MapBusStopOverlay extends ItemizedOverlay<BusStopMarker> implements
 					Log.e("RefreshMarkers",e.getMessage());
 				}
 
-				Log.i("RefreshMarkers","Time taken: "+(System.currentTimeMillis() - time));
+				//Log.i("RefreshMarkers","Time taken: "+(System.currentTimeMillis() - time));
 
 				// Now store old values (but only after 2 updates)
 				// TODO: god knows why we need to do this
