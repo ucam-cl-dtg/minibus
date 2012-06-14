@@ -53,7 +53,7 @@
 		</dependency>
 	</dependencies>
 	<properties>
-		<release.keystore>${omnibus.release.keystore}</release.keystore>
-		<release.keyalias>${omnibus.release.keyalias}</release.keyalias>
+		<android.release.keystore>${omnibus.release.keystore}</android.release.keystore>
+		<android.release.keyalias>${omnibus.release.keyalias}</android.release.keyalias>
 	</properties>
 </project>
