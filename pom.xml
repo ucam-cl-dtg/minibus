@@ -9,7 +9,13 @@
 	<groupId>uk.ac.cam.cl.dtg.android.time</groupId>
 	<artifactId>minibus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<url>https://www.cl.cam.ac.uk/research/dtg/android/minibus/</url>
 	<packaging>apk</packaging>
+	<scm>
+		<developerConnection>scm:git:git@github.com:ucam-cl-dtg/minibus.git</developerConnection>
+		<connection>scm:git:git://github.com/ucam-cl-dtg/minibus.git</connection>
+		<url>https://github.com/ucam-cl-dtg/minibus</url>
+	</scm>
 
 	<!-- Build environment variables required in settings.xml -->
 
