@@ -333,7 +333,7 @@ public class DataStore implements Runnable, Closeable {
 		// Load in new bus stops
 
 		// Create new TransportDataProvider
-		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
+		TransportDataProvider tdp = new TransportDataProvider(Constants.TRANSPORT_SERVER_APIKEY, Constants.TRANSPORT_SERVER_FEEDURL);
 
 		Log.i("UpdateDB","Hello from thread. Trying to DL set "+dataToDownload);
 

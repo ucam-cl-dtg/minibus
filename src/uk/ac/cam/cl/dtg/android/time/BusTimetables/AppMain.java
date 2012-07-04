@@ -263,7 +263,7 @@ public class AppMain extends TabActivity {
 
 	private void doSMSLookup(String smsCode) throws TransportDataException {
 		// Lookup online
-		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
+		TransportDataProvider tdp = new TransportDataProvider(Constants.TRANSPORT_SERVER_APIKEY, Constants.TRANSPORT_SERVER_FEEDURL);
 			
 		BusStop b = tdp.getStopByNaptan(smsCode);
 

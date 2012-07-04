@@ -327,7 +327,7 @@ public class BusStopActivity extends Activity implements Runnable {
 	@Override
   public void run() {
 		
-		TransportDataProvider tdp = new TransportDataProvider(Constants.OMNIBUS_APIKEY, Constants.OMNIBUS_FEEDURL);
+		TransportDataProvider tdp = new TransportDataProvider(Constants.TRANSPORT_SERVER_APIKEY, Constants.TRANSPORT_SERVER_FEEDURL);
 
 		while(keepUpdating) {
 
