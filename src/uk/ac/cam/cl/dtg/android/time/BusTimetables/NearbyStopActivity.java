@@ -1,6 +1,5 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,8 +68,6 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 		// Get a location manager
 		locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
-		List<String> providers = locationManager.getProviders(true);
-		Log.i("Nearby","Providers: "+providers);
 
 		// Choose a provider
 		Criteria crit = new Criteria();
@@ -96,7 +93,7 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 			// Try initial location get
 			try {
-			  newLocation(getLastKnownLocation(providers));
+			  newLocation(LocationHelper.getLastKnownLocation(locationManager));
 			} catch(Exception e) {
 				Log.e("Location","error on lastknown "+ e.getMessage());
 			}
@@ -115,43 +112,6 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 		}
 	}
-
-  /**
-   * According to Wolfram Alpha mean walking speed is 1.1m/s and so every second of age is 1.1
-   * meters of additional inaccuracy
-   */
-  private static final double TIMEFACTOR = 1100;
-
-  private Location getLastKnownLocation(List<String> providers) {
-    List<Location> lastLocations = new ArrayList<Location>(providers.size());
-    for (String provider : providers) {
-      Location last = locationManager.getLastKnownLocation(provider);
-      if (last != null) {
-        lastLocations.add(last);
-      }
-    }
-    return selectBestLocation(lastLocations);
-  }
-
-  public static Location selectBestLocation(List<Location> locations) {
-    long currentTime = System.currentTimeMillis();
-    Location best = null;
-    double accuracy = -1;
-    for (Location location : locations) {
-      if (null == best) {
-        best = location;
-        accuracy = location.getAccuracy() * ((currentTime - location.getTime()) / TIMEFACTOR);
-      } else if (location.hasAccuracy()) {
-        double newAccuracy =
-            location.getAccuracy() * ((currentTime - location.getTime()) / TIMEFACTOR);
-        if (newAccuracy > 0 && newAccuracy < accuracy) {
-          best = location;
-          accuracy = newAccuracy;
-        }
-      }
-    }
-    return best;
-  }
 
   @Override
   public boolean onContextItemSelected(MenuItem item) {
@@ -215,10 +175,17 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 				displayedMessage = true;
 			}
 
-		}
+    }
+    String provider = loc.getProvider();
+    if (provider != null) {
+      setLocationProviderStatus(provider);
+    }
+  }
 
-
-	}
+  private void setLocationProviderStatus(String provider) {
+    TextView txtStatus = (TextView) findViewById(R.id.txtStatus);
+    txtStatus.setText("Location provided by: " + provider);
+  }
 
 	@Override
   public void onLocationChanged(Location loc) {
@@ -246,8 +213,7 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 		ImageView imgStatus = (ImageView)findViewById(R.id.imgStatus);
 		
 		if(status == LocationProvider.AVAILABLE) {
-			
-			txtStatus.setText("Your location provided by: "+provider);
+		  setLocationProviderStatus(provider);
 			imgStatus.setBackgroundResource(R.drawable.transmit_green);
 			
 		} else if(status == LocationProvider.TEMPORARILY_UNAVAILABLE) {

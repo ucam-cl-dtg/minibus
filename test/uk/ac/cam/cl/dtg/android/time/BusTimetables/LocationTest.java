@@ -40,7 +40,7 @@ public class LocationTest {
     locations.add(realBest);
     locations.add(oldGood);
 
-    Location best = NearbyStopActivity.selectBestLocation(locations);
+    Location best = LocationHelper.selectBestLocation(locations);
     assertEquals("Best location not selected", realBest, best);
   }
 }
