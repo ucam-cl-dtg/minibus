@@ -1,5 +1,6 @@
 package uk.ac.cam.cl.dtg.android.time.BusTimetables;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -68,7 +69,8 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 
 		// Get a location manager
 		locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
-		Log.i("Nearby","Providers: "+locationManager.getProviders(true));
+		List<String> providers = locationManager.getProviders(true);
+		Log.i("Nearby","Providers: "+providers);
 
 		// Choose a provider
 		Criteria crit = new Criteria();
@@ -90,11 +92,11 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 			setContentView(R.layout.nearbystopactivity);
 
 			// Register ourselves for updates		
-			locationManager.requestLocationUpdates(provider, 1000, 5, this);
+			locationManager.requestLocationUpdates(provider, 1000, 20, this);
 
 			// Try initial location get
 			try {
-				newLocation(locationManager.getLastKnownLocation(provider));
+			  newLocation(getLastKnownLocation(providers));
 			} catch(Exception e) {
 				Log.e("Location","error on lastknown "+ e.getMessage());
 			}
@@ -112,12 +114,46 @@ public class NearbyStopActivity extends ListActivity implements LocationListener
 			this.setTitle("Using location data from "+provider);
 
 		}
-
-
 	}
 
+  /**
+   * According to Wolfram Alpha mean walking speed is 1.1m/s and so every second of age is 1.1
+   * meters of additional inaccuracy
+   */
+  private static final double TIMEFACTOR = 1100;
 
-	@Override
+  private Location getLastKnownLocation(List<String> providers) {
+    List<Location> lastLocations = new ArrayList<Location>(providers.size());
+    for (String provider : providers) {
+      Location last = locationManager.getLastKnownLocation(provider);
+      if (last != null) {
+        lastLocations.add(last);
+      }
+    }
+    return selectBestLocation(lastLocations);
+  }
+
+  public static Location selectBestLocation(List<Location> locations) {
+    long currentTime = System.currentTimeMillis();
+    Location best = null;
+    double accuracy = -1;
+    for (Location location : locations) {
+      if (null == best) {
+        best = location;
+        accuracy = location.getAccuracy() * ((currentTime - location.getTime()) / TIMEFACTOR);
+      } else if (location.hasAccuracy()) {
+        double newAccuracy =
+            location.getAccuracy() * ((currentTime - location.getTime()) / TIMEFACTOR);
+        if (newAccuracy > 0 && newAccuracy < accuracy) {
+          best = location;
+          accuracy = newAccuracy;
+        }
+      }
+    }
+    return best;
+  }
+
+  @Override
   public boolean onContextItemSelected(MenuItem item) {
 
 		AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo(); 

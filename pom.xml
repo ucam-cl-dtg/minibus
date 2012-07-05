@@ -51,9 +51,24 @@
 			<artifactId>slf4j-android</artifactId>
 			<version>1.6.1-RC1</version>
 		</dependency>
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>4.10</version>
+		  <scope>test</scope>
+		</dependency>
+		<dependency>
+		  <groupId>org.easymock</groupId>
+		  <artifactId>easymock</artifactId>
+		  <version>3.0</version>
+		  <scope>test</scope>
+		</dependency>
 	</dependencies>
 	<properties>
 		<android.release.keystore>${minibus.release.keystore}</android.release.keystore>
 		<android.release.keyalias>${minibus.release.keyalias}</android.release.keyalias>
 	</properties>
+  <build>
+    <testSourceDirectory>test</testSourceDirectory>
+  </build>
 </project>
