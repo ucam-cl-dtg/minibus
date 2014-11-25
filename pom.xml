@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>uk.ac.cam.cl.dtg</groupId>
 		<artifactId>android</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 	</parent>
 	<groupId>uk.ac.cam.cl.dtg.android.time</groupId>
 	<artifactId>minibus</artifactId>
